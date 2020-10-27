@@ -1,0 +1,30 @@
+version: '3'
+services:
+  postgres:
+    container_name: caterva-db
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: caterva
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    volumes:
+      - caterva_db_volume:/var/lib/postgresql/
+
+  redis:
+    container_name: caterva-redis
+    image: redis:alpine
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
+    volumes:
+      - caterva_redis_data_volume:/var/lib/redis
+      - caterva_redis_conf_volume:/usr/local/etc/redis/redis.conf
+volumes:
+  caterva_db_volume:
+  caterva_redis_data_volume:
+  caterva_redis_conf_volume:
