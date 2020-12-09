@@ -12,6 +12,8 @@ import { CreateAccountDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
 import {
   ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -28,9 +30,8 @@ export class AccountController {
     summary: 'Create new account',
     description: 'Create new account',
   })
-  @ApiResponse({
+  @ApiCreatedResponse({
     type: Account,
-    status: 201,
   })
   @Post()
   create(@Body() createAccountDto: CreateAccountDto): Promise<Account> {
@@ -41,10 +42,7 @@ export class AccountController {
     summary: 'Get own account',
     description: 'Get account info (derives account from token)',
   })
-  @ApiResponse({
-    type: Account,
-    status: 200,
-  })
+  @ApiOkResponse({ type: Account })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
@@ -56,10 +54,7 @@ export class AccountController {
     summary: 'Update own account',
     description: 'Update account info (derives account from token)',
   })
-  @ApiResponse({
-    type: Account,
-    status: 200,
-  })
+  @ApiOkResponse({ type: Account })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch()

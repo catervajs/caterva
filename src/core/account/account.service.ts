@@ -11,6 +11,10 @@ export class AccountService {
     @InjectRepository(Account) private accountRepository: Repository<Account>,
   ) {}
 
+  /**
+   * Create an account object with given createAccountDto
+   * @param createAccountDto
+   */
   async create(createAccountDto: CreateAccountDto): Promise<Account> {
     const account = new Account();
     account.deviceId = createAccountDto.deviceId;
@@ -21,6 +25,11 @@ export class AccountService {
     return this.accountRepository.save(account);
   }
 
+  /**
+   * Update existing account
+   * @param id
+   * @param updateAccountDto
+   */
   async update(
     id: string,
     updateAccountDto: UpdateAccountDto,
@@ -34,20 +43,41 @@ export class AccountService {
     return this.accountRepository.save(account);
   }
 
+  /**
+   * Find account by id
+   * @param id
+   */
   async findOne(id: string): Promise<Account> {
     return this.accountRepository.findOne({ id: id });
   }
 
+  /**
+   * Find account by device id
+   * @param deviceId
+   */
   async findOneWithDeviceId(deviceId: string): Promise<Account> {
     return this.accountRepository.findOne({ deviceId: deviceId });
   }
+
+  /**
+   * Find account by apple id
+   * @param appleId
+   */
   async findOneWithAppleId(appleId: string): Promise<Account> {
     return this.accountRepository.findOne({ appleId: appleId });
   }
+
+  /**
+   * Find account by google id
+   * @param googleId
+   */
   async findOneWithGoogleId(googleId: string): Promise<Account> {
     return this.accountRepository.findOne({ googleId: googleId });
   }
-
+  /**
+   * Find account by facebook id
+   * @param facebookId
+   */
   async findOneWithFacebookId(facebookId: string): Promise<Account> {
     return this.accountRepository.findOne({ facebookId: facebookId });
   }

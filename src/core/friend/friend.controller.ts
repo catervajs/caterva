@@ -16,7 +16,10 @@ import { FriendshipTwoWayRelationStatusDto } from './dto/friendship-two-way-rela
 import { ReferenceFriendDto } from './dto/reference-friend.dto';
 import {
   ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
   ApiOperation,
+  ApiParam,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -30,10 +33,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Find relations of this user',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusesDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')
@@ -46,10 +46,8 @@ export class FriendController {
   @ApiOperation({
     summary: 'Find relation of this user and any other user',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiParam({ name: 'otherId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me/:otherId')
@@ -66,6 +64,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Find relations of any user',
   })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
   @ApiResponse({
     type: FriendshipTwoWayRelationStatusesDto,
     status: 200,
@@ -83,10 +82,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Find relation of any two users',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':aId/:bId')
@@ -104,10 +100,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Send or accept friend request',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 201,
-  })
+  @ApiCreatedResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me')
@@ -124,10 +117,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Remove friendship or cancel friend request',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete('me')
@@ -147,10 +137,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Block user',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me/block')
@@ -170,10 +157,7 @@ export class FriendController {
   @ApiOperation({
     summary: 'Unblock user',
   })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusDto,
-    status: 200,
-  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me/unblock')

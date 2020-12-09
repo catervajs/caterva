@@ -10,7 +10,13 @@ import { AccountService } from './account.service';
 import { AuthDto } from './dto/auth.dto';
 import { JwtService } from '@nestjs/jwt';
 import { Account } from './entities/account.entity';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
+import { AccessTokenDto } from './dto/access-token.dto';
 
 function _generateJwt(jwtService: JwtService, account: Account): string {
   const payload = {
@@ -31,9 +37,11 @@ export class AuthController {
     description: 'Authenticate account with Device ID',
     summary: 'Auth with deviceId',
   })
+  @ApiOkResponse({ type: AccessTokenDto })
+  @ApiBadRequestResponse()
   @Post('device')
   @HttpCode(HttpStatus.OK)
-  async authWithDeviceId(@Body() authDto: AuthDto) {
+  async authWithDeviceId(@Body() authDto: AuthDto): Promise<AccessTokenDto> {
     const account = await this.accountService.findOneWithDeviceId(authDto.id);
     if (account == null) {
       throw new HttpException(
@@ -44,16 +52,18 @@ export class AuthController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return { access_token: _generateJwt(this.jwtService, account) };
+    return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
   @ApiOperation({
     description: 'Authenticate account with Google ID',
     summary: 'Auth with googleId',
   })
+  @ApiOkResponse({ type: AccessTokenDto })
+  @ApiBadRequestResponse()
   @Post('google')
   @HttpCode(HttpStatus.OK)
-  async authWithGoogleId(@Body() authDto: AuthDto) {
+  async authWithGoogleId(@Body() authDto: AuthDto): Promise<AccessTokenDto> {
     const account = await this.accountService.findOneWithGoogleId(authDto.id);
     if (account == null) {
       throw new HttpException(
@@ -64,16 +74,18 @@ export class AuthController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return { access_token: _generateJwt(this.jwtService, account) };
+    return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
   @ApiOperation({
     description: 'Authenticate account with Apple ID',
     summary: 'Auth with appleId',
   })
+  @ApiOkResponse({ type: AccessTokenDto })
+  @ApiBadRequestResponse()
   @Post('apple')
   @HttpCode(HttpStatus.OK)
-  async authWithAppleId(@Body() authDto: AuthDto) {
+  async authWithAppleId(@Body() authDto: AuthDto): Promise<AccessTokenDto> {
     const account = await this.accountService.findOneWithAppleId(authDto.id);
     if (account == null) {
       throw new HttpException(
@@ -84,16 +96,18 @@ export class AuthController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return { access_token: _generateJwt(this.jwtService, account) };
+    return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
   @ApiOperation({
-    description: 'Authenticate account with Apple ID',
-    summary: 'Auth with appleId',
+    description: 'Authenticate account with Facebook ID',
+    summary: 'Auth with facebookId',
   })
-  @Post('apple')
+  @ApiOkResponse({ type: AccessTokenDto })
+  @ApiBadRequestResponse()
+  @Post('facebook')
   @HttpCode(HttpStatus.OK)
-  async authWithFacebookId(@Body() authDto: AuthDto) {
+  async authWithFacebookId(@Body() authDto: AuthDto): Promise<AccessTokenDto> {
     const account = await this.accountService.findOneWithFacebookId(authDto.id);
     if (account == null) {
       throw new HttpException(
@@ -104,6 +118,6 @@ export class AuthController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    return { access_token: _generateJwt(this.jwtService, account) };
+    return { accessToken: _generateJwt(this.jwtService, account) };
   }
 }
