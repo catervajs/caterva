@@ -8,7 +8,7 @@ export class SelfReferenceErrorFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = HttpStatus.BAD_REQUEST;
-    const name = exce
+    const name = exception;
     const message = exception.message;
 
     response.status(status).json({
@@ -16,7 +16,7 @@ export class SelfReferenceErrorFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       path: request.url,
       error: {
-        name: name
+        name: name,
         message: message,
       },
     });

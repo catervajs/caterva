@@ -73,7 +73,9 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.service.ts"
+      "**/*.service.ts",
+      "!**/extensions/**/*.service.ts",
+      "!**/leaderboard/**/*.service.ts"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
