@@ -11,6 +11,11 @@ export class CouldNotUpdateLeaderboardEntryError extends _BaseLeaderboardExcepti
 export class LeaderboardService {
   constructor(private readonly redisService: RedisService) {}
 
+  /**
+   * Get entry of user in a leaderboard
+   * @param leaderboardId
+   * @param userId
+   */
   async getEntry(
     leaderboardId: string,
     userId: string,
@@ -32,6 +37,11 @@ export class LeaderboardService {
     };
   }
 
+  /**
+   * Get entries in leaderboard
+   * @param leaderboardId
+   * @param options
+   */
   async getEntries(
     leaderboardId: string,
     options?: {
@@ -80,6 +90,12 @@ export class LeaderboardService {
     };
   }
 
+  /**
+   * Update users score in leaderboard
+   * @param leaderboardId
+   * @param userId
+   * @param score
+   */
   async updateEntry(
     leaderboardId: string,
     userId: string,

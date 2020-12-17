@@ -1,0 +1,639 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caterva documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caterva documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>NotGroupAdminError</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/core/group/group.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../classes/_BaseGroupException.html" target="_self" >_BaseGroupException</a></code>
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { ILike, Repository } from &#x27;typeorm&#x27;;
+import { Group } from &#x27;./entities/group.entity&#x27;;
+import { GroupMember } from &#x27;./entities/group-member.entity&#x27;;
+import { GroupMembershipStatus } from &#x27;./enums/group-membership-status.enum&#x27;;
+import { UpdateGroupDto } from &#x27;./dto/update-group.dto&#x27;;
+
+export class _BaseGroupException extends Error {}
+
+export class GroupDoesNotExistError extends _BaseGroupException {}
+export class NotGroupAdminError extends _BaseGroupException {}
+export class BannedFromGroupError extends _BaseGroupException {}
+export class NotInvitedToGroupError extends _BaseGroupException {}
+export class NotGroupMemberError extends _BaseGroupException {}
+export class CannotDeleteGroupError extends _BaseGroupException {}
+export class CannotLeaveGroupError extends _BaseGroupException {}
+export class CannotBanError extends _BaseGroupException {}
+export class CannotKickError extends _BaseGroupException {}
+
+@Injectable()
+export class GroupService {
+  constructor(
+    @InjectRepository(Group)
+    private readonly groupRepository: Repository&lt;Group&gt;,
+    @InjectRepository(GroupMember)
+    private readonly groupMemberRepository: Repository&lt;GroupMember&gt;,
+  ) {}
+
+  /**
+   * Create a group
+   * @param creatorId
+   * @param groupName
+   * @param inviteOnly
+   */
+  async create(
+    creatorId: string,
+    groupName: string,
+    inviteOnly &#x3D; false,
+  ): Promise&lt;Group&gt; {
+    const group &#x3D; new Group();
+    group.name &#x3D; groupName;
+    group.inviteOnly &#x3D; inviteOnly;
+    const savedGroup &#x3D; await this.groupRepository.save(group);
+
+    const groupMember &#x3D; new GroupMember();
+    groupMember.group &#x3D; savedGroup;
+    groupMember.memberId &#x3D; creatorId;
+    groupMember.membershipStatus &#x3D; GroupMembershipStatus.Admin;
+    await this.groupMemberRepository.save(groupMember);
+    return savedGroup;
+  }
+
+  /**
+   * Find a group and return group info if exists
+   * @param groupId
+   * @throws GroupDoesNotExistError
+   */
+  async findOne(groupId: string): Promise&lt;Group&gt; {
+    const group &#x3D; await this.groupRepository.findOne({ id: groupId });
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+    return group;
+  }
+
+  /**
+   * Find groups, optionally filter by name and invite only properies
+   * @param options
+   */
+  async findMany(options: {
+    name?: string;
+    inviteOnly?: boolean;
+  }): Promise&lt;[Group[], number]&gt; {
+    return this.groupRepository.findAndCount({
+      where: {
+        // falsy conditions should be discarded
+        ...(options.name &amp;&amp; { name: ILike(&#x60;%${options.name}%&#x60;) }),
+        // falsy values will cause errors
+        ...(options.inviteOnly !&#x3D; null &amp;&amp; { inviteOnly: options.inviteOnly }),
+      },
+    });
+  }
+
+  /**
+   * Update group
+   * @param groupId
+   * @param actingUserId
+   * @param updateGroupDto
+   * @throws GroupDoesNotExistError
+   * @throws NotGroupMemberError
+   * @throws NotGroupAdminError
+   */
+  async update(
+    groupId: string,
+    actingUserId: string,
+    updateGroupDto: UpdateGroupDto,
+  ): Promise&lt;Group&gt; {
+    const group &#x3D; await this.groupRepository.findOne({ id: groupId });
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+
+    const groupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (groupMember &#x3D;&#x3D; null) {
+      throw new NotGroupMemberError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not a member of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    if (groupMember?.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    group.name &#x3D; updateGroupDto.name ?? group.name;
+    group.inviteOnly &#x3D; updateGroupDto.inviteOnly ?? group.inviteOnly;
+    return this.groupRepository.save(group);
+  }
+
+  /**
+   * Delete group
+   * @param groupId
+   * @param actingUserId
+   * @throws GroupDoesNotExistError
+   * @throws NotGroupMemberError
+   * @throws NotGroupAdminError
+   * @throws CannotDeleteGroupError
+   */
+  async delete(groupId: string, actingUserId: string): Promise&lt;void&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(
+        &#x60;User &quot;${actingUserId}&quot; cannot delete non existing group ${groupId}&#x60;,
+      );
+    }
+    const groupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (groupMember?.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;User &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    const adminCount &#x3D; await this.groupMemberRepository.count({
+      groupId: groupId,
+      membershipStatus: GroupMembershipStatus.Admin,
+    });
+    if (adminCount &#x3D;&#x3D;&#x3D; 1) {
+      throw new CannotDeleteGroupError(
+        &#x60;Acting user &quot;${actingUserId}&quot; cannot delete group &quot;${groupId}&quot; with the presence of other admins&#x60;,
+      );
+    }
+    await this.groupRepository.delete({ id: groupId });
+  }
+
+  /**
+   * Invite user to group
+   * @param groupId
+   * @param actingUserId
+   * @param targetUserId
+   * @throws GroupDoesNotExistError
+   * @throws NotGroupMemberError
+   * @throws NotGroupAdminError
+   */
+  async invite(
+    groupId: string,
+    actingUserId: string,
+    targetUserId: string,
+  ): Promise&lt;GroupMember&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(
+        &#x60;User &quot;${targetUserId}&quot; cannot be invited to non existing group ${groupId}&#x60;,
+      );
+    }
+
+    // check if the acting member is an admin
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (actingGroupMember &#x3D;&#x3D; null) {
+      throw new NotGroupMemberError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not a member of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    if (actingGroupMember.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne(
+      targetUserId,
+    );
+    if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Banned) {
+      throw new BannedFromGroupError(
+        &#x60;Invited user &quot;${targetUserId}&quot; is banned from group &quot;${groupId}&quot;, unban first to invite&#x60;,
+      );
+    }
+    if (
+      targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Admin ||
+      targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Member ||
+      targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Invited
+    ) {
+      // invited user already a member or previously invited
+      return targetGroupMember;
+    }
+
+    const newMember &#x3D; new GroupMember();
+    newMember.groupId &#x3D; groupId;
+    newMember.memberId &#x3D; targetUserId;
+    newMember.membershipStatus &#x3D; GroupMembershipStatus.Invited;
+
+    return this.groupMemberRepository.save(newMember);
+  }
+
+  /**
+   * Find groups of user
+   * @param userId
+   */
+  async findMembershipsOfUser(userId: string): Promise&lt;GroupMember[]&gt; {
+    return this.groupMemberRepository.find({
+      where: { memberId: userId },
+      relations: [&#x27;group&#x27;],
+    });
+  }
+
+  /**
+   * Join a group
+   * @param groupId
+   * @param actingUserId
+   */
+  async join(groupId: string, actingUserId: string): Promise&lt;GroupMember&gt; {
+    const group &#x3D; await this.groupRepository.findOne({ id: groupId });
+    if (!group) {
+      throw new GroupDoesNotExistError(
+        &#x60;User &quot;${actingUserId}&quot; cannot join non existing group ${groupId}&#x60;,
+      );
+    }
+
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+
+    // banned
+    if (actingGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Banned) {
+      throw new BannedFromGroupError(
+        &#x60;User &quot;${actingUserId}&quot; is banned from group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    // already a member
+    if (
+      actingGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Admin ||
+      actingGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Member
+    ) {
+      return actingGroupMember;
+    }
+    // trying to join an invite only server
+    if (group.inviteOnly) {
+      if (
+        actingGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Invited
+      ) {
+        // has invite
+        actingGroupMember.membershipStatus &#x3D; GroupMembershipStatus.Member;
+        // save and return;
+        return this.groupMemberRepository.save(actingGroupMember);
+      } else {
+        // no invitation
+        throw new NotInvitedToGroupError(
+          &#x60;User &quot;${actingUserId}&quot; was not invited to group &quot;${groupId}&quot;&#x60;,
+        );
+      }
+    }
+
+    const newMember &#x3D; new GroupMember();
+    newMember.groupId &#x3D; groupId;
+    newMember.memberId &#x3D; actingUserId;
+    newMember.membershipStatus &#x3D; GroupMembershipStatus.Member;
+    return this.groupMemberRepository.save(newMember);
+  }
+
+  /**
+   * Get member status
+   * @param groupId
+   * @param memberId
+   */
+  async getMember(groupId: string, memberId: string): Promise&lt;GroupMember&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+    return this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: memberId,
+    });
+  }
+
+  // read group members
+  async getMembers(groupId: string): Promise&lt;[GroupMember[], number]&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId, {
+      relations: [&#x27;members&#x27;],
+    });
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+    return [group.members, group.members.length];
+  }
+
+  /**
+   * Leave a group
+   * @param groupId
+   * @param actingUserId
+   */
+  async leave(groupId: string, actingUserId: string) {
+    const group &#x3D; await this.groupRepository.findOne(groupId, {
+      relations: [&#x27;members&#x27;],
+    });
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+
+    if (actingGroupMember &#x3D;&#x3D; null) {
+      throw new NotGroupMemberError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not a member of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    if (actingGroupMember.membershipStatus &#x3D;&#x3D; GroupMembershipStatus.Banned) {
+      throw new BannedFromGroupError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not banned from group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    if (actingGroupMember.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      const currentAdminCount &#x3D; await this.groupMemberRepository.count({
+        groupId: groupId,
+        membershipStatus: GroupMembershipStatus.Admin,
+      });
+      // last member as admin
+      if (currentAdminCount &#x3D;&#x3D;&#x3D; 1) {
+        throw new CannotLeaveGroupError(
+          &#x60;Acting user &quot;${actingUserId}&quot; cannot leave group &quot;${groupId}&quot; as the last admin, should either assign someone else as admin and leave or delete the group&#x60;,
+        );
+      }
+    }
+
+    await this.groupMemberRepository.remove(actingGroupMember);
+  }
+
+  /**
+   * Ban user from group
+   * @param groupId
+   * @param actingUserId
+   * @param targetUserId
+   * @throws GroupDoesNotExistError
+   * @throws NotGroupAdminError
+   * @throws CannotBanError
+   */
+  async ban(
+    groupId: string,
+    actingUserId: string,
+    targetUserId: string,
+  ): Promise&lt;GroupMember&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (actingGroupMember?.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: targetUserId,
+    });
+    if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new CannotBanError(
+        &#x60;User to ban &quot;${targetUserId}&quot; is an admin in group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Banned) {
+      return targetGroupMember;
+    }
+    if (targetGroupMember &#x3D;&#x3D; null) {
+      const newBan &#x3D; new GroupMember();
+      newBan.groupId &#x3D; groupId;
+      newBan.memberId &#x3D; targetUserId;
+      newBan.membershipStatus &#x3D; GroupMembershipStatus.Banned;
+      return this.groupMemberRepository.save(newBan);
+    }
+
+    targetGroupMember.membershipStatus &#x3D; GroupMembershipStatus.Banned;
+    return this.groupMemberRepository.save(targetGroupMember);
+  }
+
+  /**
+   * Unban, kick or remove invitation of user from group
+   * @param groupId
+   * @param actingUserId
+   * @param targetUserId
+   * @throws GroupDoesNotExistError
+   * @throws NotGroupAdminError
+   * @throws CannotKickError
+   */
+  async removeMember(
+    groupId: string,
+    actingUserId: string,
+    targetUserId: string,
+  ): Promise&lt;void&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (actingGroupMember?.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: targetUserId,
+    });
+    if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new CannotKickError(
+        &#x60;Target user &quot;${actingUserId}&quot; is an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    if (targetGroupMember &#x3D;&#x3D; null) {
+      return;
+    }
+    await this.groupMemberRepository.remove(targetGroupMember);
+  }
+
+  async promoteToAdmin(
+    groupId: string,
+    actingUserId: string,
+    targetUserId: string,
+  ): Promise&lt;GroupMember&gt; {
+    const group &#x3D; await this.groupRepository.findOne(groupId);
+    if (group &#x3D;&#x3D; null) {
+      throw new GroupDoesNotExistError(&#x60;Group &quot;${groupId}&quot; does not exist&#x60;);
+    }
+
+    const actingGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: actingUserId,
+    });
+    if (actingGroupMember?.membershipStatus !&#x3D;&#x3D; GroupMembershipStatus.Admin) {
+      throw new NotGroupAdminError(
+        &#x60;Acting user &quot;${actingUserId}&quot; is not an admin of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: targetUserId,
+    });
+    if (targetGroupMember &#x3D;&#x3D; null) {
+      throw new NotGroupMemberError(
+        &#x60;Target user &quot;${targetUserId}&quot; is not a member of group &quot;${groupId}&quot;&#x60;,
+      );
+    }
+    targetGroupMember.membershipStatus &#x3D; GroupMembershipStatus.Admin;
+    return this.groupMemberRepository.save(targetGroupMember);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'NotGroupAdminError.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

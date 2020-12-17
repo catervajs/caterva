@@ -1,0 +1,482 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caterva documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caterva documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>SelfReferenceError</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/core/friend/friend.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>Error</code>
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Friendship } from &#x27;./entities/friendship.entity&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
+import { FriendshipComposite } from &#x27;./entities/friendship-composite-view.entity&#x27;;
+import { FriendshipOneWayRelationStatus } from &#x27;./enums/friendship-one-way-relation-status.enum&#x27;;
+import { FriendshipTwoWayRelationStatus } from &#x27;./enums/friendship-two-way-relation-status.enum&#x27;;
+import { FriendshipTwoWayRelationStatusesDto } from &#x27;./dto/friendship-two-way-relation-statuses.dto&#x27;;
+
+export class SelfReferenceError extends Error {}
+
+@Injectable()
+export class FriendService {
+  constructor(
+    @InjectRepository(Friendship)
+    private friendshipRepository: Repository&lt;Friendship&gt;,
+    @InjectRepository(FriendshipComposite)
+    private friendshipCompositeRepository: Repository&lt;FriendshipComposite&gt;,
+  ) {}
+
+  /**
+   * Derive the two-way relation status given the normal and inverse one-way relation statuses
+   * @param normalRelationStatus One-way relation status from a to b
+   * @param inverseRelationStatus One-way relation status from b to a
+   */
+  private static _deriveTwoWayRelationStatus(
+    normalRelationStatus: FriendshipOneWayRelationStatus,
+    inverseRelationStatus: FriendshipOneWayRelationStatus,
+  ): FriendshipTwoWayRelationStatus | null {
+    if (
+      normalRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.Ok &amp;&amp;
+      inverseRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.Ok
+    ) {
+      return FriendshipTwoWayRelationStatus.Friends;
+    }
+    if (
+      normalRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.Ok &amp;&amp;
+      inverseRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.NoAction
+    ) {
+      return FriendshipTwoWayRelationStatus.SentRequest;
+    }
+    if (
+      normalRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.NoAction &amp;&amp;
+      inverseRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.Ok
+    ) {
+      return FriendshipTwoWayRelationStatus.ReceivedRequest;
+    }
+    if (
+      normalRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.DidBlock &amp;&amp;
+      inverseRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.GotBlocked
+    ) {
+      return FriendshipTwoWayRelationStatus.BlockedByYou;
+    }
+    if (
+      normalRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.GotBlocked &amp;&amp;
+      inverseRelationStatus &#x3D;&#x3D;&#x3D; FriendshipOneWayRelationStatus.DidBlock
+    ) {
+      return FriendshipTwoWayRelationStatus.BlockedByOther;
+    }
+    // no complete relation
+    return null;
+  }
+
+  /**
+   * Get both one-way relation statuses from a to b and from b to a
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  private async _getNormalAndInverse(
+    aId: string,
+    bId: string,
+  ): Promise&lt;[Friendship, Friendship]&gt; {
+    return Promise.all([
+      this.friendshipRepository.findOne({ aId: aId, bId: bId }),
+      this.friendshipRepository.findOne({ aId: bId, bId: aId }),
+    ]);
+  }
+
+  /**
+   * Get the one-way relation status of a to b
+   * @param aId Account UUID for the acting user
+   * @param bId Account UUID for the referred user
+   */
+  async get(aId: string, bId: string): Promise&lt;FriendshipTwoWayRelationStatus&gt; {
+    const [normal, inverse] &#x3D; await this._getNormalAndInverse(aId, bId);
+    return FriendService._deriveTwoWayRelationStatus(
+      normal?.status,
+      inverse?.status,
+    );
+  }
+
+  /**
+   * Get all two-way relation statuses of a user
+   * @param aId
+   */
+  async getAll(aId: string): Promise&lt;FriendshipTwoWayRelationStatusesDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusesDto();
+    const friendshipComposites &#x3D; await this.friendshipCompositeRepository.find({
+      where: { aId: aId },
+    });
+    for (const friendshipComposite of friendshipComposites) {
+      const finalStatus &#x3D; FriendService._deriveTwoWayRelationStatus(
+        friendshipComposite?.statusAtoB,
+        friendshipComposite?.statusBtoA,
+      );
+      const id &#x3D; friendshipComposite.bId;
+      switch (finalStatus) {
+        case FriendshipTwoWayRelationStatus.SentRequest:
+          dto.sentRequests.push(id);
+          break;
+        case FriendshipTwoWayRelationStatus.ReceivedRequest:
+          dto.receivedRequests.push(id);
+          break;
+        case FriendshipTwoWayRelationStatus.Friends:
+          dto.friends.push(id);
+          break;
+        case FriendshipTwoWayRelationStatus.BlockedByYou:
+          dto.blockedByYou.push(id);
+          break;
+        case FriendshipTwoWayRelationStatus.BlockedByOther:
+          dto.blockedByOther.push(id);
+          break;
+      }
+    }
+    return dto;
+  }
+
+  /**
+   * Individually set relations between two users
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   * @param normalStatus One way friendship relation from a to b
+   * @param inverseStatus One way friendship relation from b to a
+   * @private
+   */
+  private async _setRelations(
+    aId: string,
+    bId: string,
+    normalStatus: FriendshipOneWayRelationStatus,
+    inverseStatus: FriendshipOneWayRelationStatus,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    const normal &#x3D; new Friendship();
+    normal.aId &#x3D; aId;
+    normal.bId &#x3D; bId;
+    normal.status &#x3D; normalStatus;
+
+    const inverse &#x3D; new Friendship();
+    inverse.aId &#x3D; bId;
+    inverse.bId &#x3D; aId;
+    inverse.status &#x3D; inverseStatus;
+
+    const [savedNormal, savedInverse] &#x3D; await this.friendshipRepository.save([
+      normal,
+      inverse,
+    ]);
+    return FriendService._deriveTwoWayRelationStatus(
+      savedNormal?.status,
+      savedInverse?.status,
+    );
+  }
+
+  /**
+   * Remove all relations between a and b
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   * @private
+   */
+  private async _removeRelations(aId: string, bId: string): Promise&lt;void&gt; {
+    await Promise.all([
+      this.friendshipRepository.delete({ aId: aId, bId: bId }),
+      this.friendshipRepository.delete({ aId: bId, bId: aId }),
+    ]);
+  }
+
+  /**
+   * Set both one-way relations from a to b represent a friend request
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async _sendFriendRequest(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    return this._setRelations(
+      aId,
+      bId,
+      FriendshipOneWayRelationStatus.Ok,
+      FriendshipOneWayRelationStatus.NoAction,
+    );
+  }
+
+  /**
+   * Set two-way relation as friends
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async _acceptFriendRequest(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    return this._setRelations(
+      aId,
+      bId,
+      FriendshipOneWayRelationStatus.Ok,
+      FriendshipOneWayRelationStatus.Ok,
+    );
+  }
+
+  /**
+   * Send friend request from a to b, or accept friend request from b to a
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async add(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    if (aId &#x3D;&#x3D;&#x3D; bId) {
+      throw new SelfReferenceError(
+        &#x60;${aId} cannot reference itself for friendship operations&#x60;,
+      );
+    }
+    const [normal, inverse] &#x3D; await this._getNormalAndInverse(aId, bId);
+    const currentFinalStatus &#x3D; FriendService._deriveTwoWayRelationStatus(
+      normal?.status,
+      inverse?.status,
+    );
+    switch (currentFinalStatus) {
+      case FriendshipTwoWayRelationStatus.BlockedByOther:
+      case FriendshipTwoWayRelationStatus.BlockedByYou:
+      case FriendshipTwoWayRelationStatus.SentRequest:
+      case FriendshipTwoWayRelationStatus.Friends:
+        // blocked status blocks any other action, return blocked status and do nothing.
+        return currentFinalStatus;
+      case FriendshipTwoWayRelationStatus.ReceivedRequest:
+        return this._acceptFriendRequest(aId, bId);
+      case null:
+        return this._sendFriendRequest(aId, bId);
+    }
+  }
+
+  /**
+   * Remove friendship of a and b or discard friend request from b
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async remove(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    if (aId &#x3D;&#x3D;&#x3D; bId) {
+      throw new SelfReferenceError(
+        &#x60;${aId} cannot reference itself for friendship operations&#x60;,
+      );
+    }
+    const [normal, inverse] &#x3D; await this._getNormalAndInverse(aId, bId);
+    const currentFinalStatus &#x3D; FriendService._deriveTwoWayRelationStatus(
+      normal?.status,
+      inverse?.status,
+    );
+    switch (currentFinalStatus) {
+      case FriendshipTwoWayRelationStatus.BlockedByOther:
+      case FriendshipTwoWayRelationStatus.BlockedByYou:
+        // blocked status blocks any other action, return blocked status and do nothing.
+        return currentFinalStatus;
+      default:
+        await this._removeRelations(aId, bId);
+        return null;
+    }
+  }
+
+  /**
+   * Block b for a
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async block(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    if (aId &#x3D;&#x3D;&#x3D; bId) {
+      throw new SelfReferenceError(
+        &#x60;${aId} cannot reference itself for friendship operations&#x60;,
+      );
+    }
+    const [normal, inverse] &#x3D; await this._getNormalAndInverse(aId, bId);
+    const currentFinalStatus &#x3D; FriendService._deriveTwoWayRelationStatus(
+      normal?.status,
+      inverse?.status,
+    );
+    switch (currentFinalStatus) {
+      // already blocked statuses
+      case FriendshipTwoWayRelationStatus.BlockedByYou:
+      case FriendshipTwoWayRelationStatus.BlockedByOther:
+        return currentFinalStatus;
+      default:
+        return this._setRelations(
+          aId,
+          bId,
+          FriendshipOneWayRelationStatus.DidBlock,
+          FriendshipOneWayRelationStatus.GotBlocked,
+        );
+    }
+  }
+
+  /**
+   * Unblock b for a
+   * @param aId Account UUID for acting user
+   * @param bId Account UUID for referred user
+   */
+  async unblock(
+    aId: string,
+    bId: string,
+  ): Promise&lt;FriendshipTwoWayRelationStatus | null&gt; {
+    if (aId &#x3D;&#x3D;&#x3D; bId) {
+      throw new SelfReferenceError(
+        &#x60;${aId} cannot reference itself for friendship operations&#x60;,
+      );
+    }
+    const [normal, inverse] &#x3D; await this._getNormalAndInverse(aId, bId);
+    const currentFinalStatus &#x3D; FriendService._deriveTwoWayRelationStatus(
+      normal?.status,
+      inverse?.status,
+    );
+    switch (currentFinalStatus) {
+      case FriendshipTwoWayRelationStatus.BlockedByYou:
+        await this._removeRelations(aId, bId);
+        return null;
+      default:
+        return currentFinalStatus;
+    }
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'SelfReferenceError.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

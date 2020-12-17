@@ -1,0 +1,1075 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caterva documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caterva documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content controller">
+                   <div class="content-data">
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Controllers</li>
+  <li>FriendController</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/core/friend/friend.controller.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>friends</code>
+            </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#add">add</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#block">block</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findRelationOfMeAndOther">findRelationOfMeAndOther</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findRelations">findRelations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findRelationsOfMe">findRelationsOfMe</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findRelationWithOther">findRelationWithOther</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#remove">remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#unblock">unblock</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            add
+                        </b>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>add(req, addFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Send or accept friend request&#x27;})<br />@ApiCreatedResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>addFriendDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReferenceFriendDto.html" target="_self" >ReferenceFriendDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="block"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            block
+                        </b>
+                        <a href="#block"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>block(req, blockFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Block user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/block&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>blockFriendDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReferenceFriendDto.html" target="_self" >ReferenceFriendDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRelationOfMeAndOther"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findRelationOfMeAndOther
+                        </b>
+                        <a href="#findRelationOfMeAndOther"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findRelationOfMeAndOther(req, otherId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find relation of this user and any other user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiParam({name: &#x27;otherId&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me/:otherId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>otherId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRelations"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findRelations
+                        </b>
+                        <a href="#findRelations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findRelations(req, aId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find relations of any user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusesDto})<br />@ApiResponse({type: FriendshipTwoWayRelationStatusesDto, status: 200})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>aId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusesDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRelationsOfMe"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findRelationsOfMe
+                        </b>
+                        <a href="#findRelationsOfMe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findRelationsOfMe(req)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find relations of this user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusesDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:40</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusesDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRelationWithOther"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findRelationWithOther
+                        </b>
+                        <a href="#findRelationWithOther"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findRelationWithOther(req, aId, bId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find relation of any two users&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId/:bId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>aId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>bId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            remove
+                        </b>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(req, removeFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Remove friendship or cancel friend request&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>removeFriendDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReferenceFriendDto.html" target="_self" >ReferenceFriendDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unblock"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            unblock
+                        </b>
+                        <a href="#unblock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>unblock(req, unblockFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Unblock user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/unblock&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>unblockFriendDto</td>
+                                    <td>
+                                                <code><a href="../classes/ReferenceFriendDto.html" target="_self" >ReferenceFriendDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#FriendshipTwoWayRelationStatus" target="_self" >Promise&lt;FriendshipTwoWayRelationStatusDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Controller,
+  Get,
+  UseGuards,
+  Request,
+  Param,
+  Post,
+  Body,
+  Delete,
+  UseFilters,
+} from &#x27;@nestjs/common&#x27;;
+import { FriendService } from &#x27;./friend.service&#x27;;
+import { FriendshipTwoWayRelationStatusesDto } from &#x27;./dto/friendship-two-way-relation-statuses.dto&#x27;;
+import { JwtAuthGuard } from &#x27;../../common/guard/jwt-auth.guard&#x27;;
+import { FriendshipTwoWayRelationStatusDto } from &#x27;./dto/friendship-two-way-relation-status.dto&#x27;;
+import { ReferenceFriendDto } from &#x27;./dto/reference-friend.dto&#x27;;
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from &#x27;@nestjs/swagger&#x27;;
+import { SelfReferenceErrorFilter } from &#x27;./self-reference-error.filter&#x27;;
+
+@ApiTags(&#x27;friends&#x27;)
+@Controller(&#x27;friends&#x27;)
+export class FriendController {
+  constructor(private readonly friendService: FriendService) {}
+
+  @ApiOperation({
+    summary: &#x27;Find relations of this user&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(&#x27;me&#x27;)
+  async findRelationsOfMe(
+    @Request() req,
+  ): Promise&lt;FriendshipTwoWayRelationStatusesDto&gt; {
+    return this.friendService.getAll(req.user.sub);
+  }
+
+  @ApiOperation({
+    summary: &#x27;Find relation of this user and any other user&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiParam({ name: &#x27;otherId&#x27; })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(&#x27;me/:otherId&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async findRelationOfMeAndOther(
+    @Request() req,
+    @Param(&#x27;otherId&#x27;) otherId,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.get(req.user.sub, otherId);
+    return dto;
+  }
+
+  @ApiOperation({
+    summary: &#x27;Find relations of any user&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
+  @ApiResponse({
+    type: FriendshipTwoWayRelationStatusesDto,
+    status: 200,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(&#x27;:aId&#x27;)
+  async findRelations(
+    @Request() req,
+    @Param(&#x27;aId&#x27;) aId,
+  ): Promise&lt;FriendshipTwoWayRelationStatusesDto&gt; {
+    return this.friendService.getAll(aId);
+  }
+
+  @ApiOperation({
+    summary: &#x27;Find relation of any two users&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(&#x27;:aId/:bId&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async findRelationWithOther(
+    @Request() req,
+    @Param(&#x27;aId&#x27;) aId,
+    @Param(&#x27;bId&#x27;) bId,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.get(aId, bId);
+    return dto;
+  }
+
+  @ApiOperation({
+    summary: &#x27;Send or accept friend request&#x27;,
+  })
+  @ApiCreatedResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post(&#x27;me&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async add(
+    @Request() req,
+    @Body() addFriendDto: ReferenceFriendDto,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.add(req.user.sub, addFriendDto.id);
+    return dto;
+  }
+
+  @ApiOperation({
+    summary: &#x27;Remove friendship or cancel friend request&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Delete(&#x27;me&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async remove(
+    @Request() req,
+    @Body() removeFriendDto: ReferenceFriendDto,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.remove(
+      req.user.sub,
+      removeFriendDto.id,
+    );
+    return dto;
+  }
+
+  @ApiOperation({
+    summary: &#x27;Block user&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post(&#x27;me/block&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async block(
+    @Request() req,
+    @Body() blockFriendDto: ReferenceFriendDto,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.block(
+      req.user.sub,
+      blockFriendDto.id,
+    );
+    return dto;
+  }
+
+  @ApiOperation({
+    summary: &#x27;Unblock user&#x27;,
+  })
+  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post(&#x27;me/unblock&#x27;)
+  @UseFilters(new SelfReferenceErrorFilter())
+  async unblock(
+    @Request() req,
+    @Body() unblockFriendDto: ReferenceFriendDto,
+  ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
+    const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
+    dto.status &#x3D; await this.friendService.unblock(
+      req.user.sub,
+      unblockFriendDto.id,
+    );
+    return dto;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'FriendController.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

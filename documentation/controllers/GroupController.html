@@ -1,0 +1,1914 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caterva documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caterva documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content controller">
+                   <div class="content-data">
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Controllers</li>
+  <li>GroupController</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/core/group/group.controller.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>groups</code>
+            </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#banFromGroup">banFromGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#create">create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findMany">findMany</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOne">findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getMemberOfGroup">getMemberOfGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getMembershipsOfMe">getMembershipsOfMe</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getMembershipsOfUser">getMembershipsOfUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getMembersOfGroup">getMembersOfGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#inviteToGroup">inviteToGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#joinGroup">joinGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#leaveGroup">leaveGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#promote">promote</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeMemberOfGroup">removeMemberOfGroup</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#update">update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="banFromGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            banFromGroup
+                        </b>
+                        <a href="#banFromGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>banFromGroup(req, groupId, targetUserId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Ban user from group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiOkResponse({type: MembershipDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Post(&#x27;:groupId/members/:userId/ban&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="325"
+                            class="link-to-prism">src/core/group/group.controller.ts:325</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetUserId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipDto.html" target="_self" >Promise&lt;MembershipDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            create
+                        </b>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(req, createGroupDto: <a href="../classes/CreateGroupDto.html">CreateGroupDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Create group&#x27;})<br />@ApiCreatedResponse({type: CreateGroupDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Post()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/core/group/group.controller.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>createGroupDto</td>
+                                    <td>
+                                                <code><a href="../classes/CreateGroupDto.html" target="_self" >CreateGroupDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;GroupDto&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            delete
+                        </b>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>delete(req, groupId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Delete group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiNoContentResponse()<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Delete(&#x27;:groupId&#x27;)<br />@HttpCode(HttpStatus.NO_CONTENT)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/core/group/group.controller.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findMany"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findMany
+                        </b>
+                        <a href="#findMany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findMany(name?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, inviteOnly?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find groups&#x27;})<br />@ApiOkResponse({type: GroupsDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/core/group/group.controller.ts:76</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>inviteOnly</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;GroupsDto&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOne"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findOne
+                        </b>
+                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(groupId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Find group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiOkResponse({type: GroupDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get(&#x27;:groupId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/core/group/group.controller.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;GroupDto&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMemberOfGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getMemberOfGroup
+                        </b>
+                        <a href="#getMemberOfGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getMemberOfGroup(req, groupId, userId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Get member of group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiOkResponse({type: MembershipDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get(&#x27;:groupId/members/:userId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="219"
+                            class="link-to-prism">src/core/group/group.controller.ts:219</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>userId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipDto.html" target="_self" >Promise&lt;MembershipDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMembershipsOfMe"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getMembershipsOfMe
+                        </b>
+                        <a href="#getMembershipsOfMe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getMembershipsOfMe(req)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Get memberships of me&#x27;})<br />@ApiOkResponse({type: MembershipsDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get(&#x27;memberships/me&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">src/core/group/group.controller.ts:157</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipsDto.html" target="_self" >Promise&lt;MembershipsDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMembershipsOfUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getMembershipsOfUser
+                        </b>
+                        <a href="#getMembershipsOfUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getMembershipsOfUser(req, userId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Get memberships of user&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiOkResponse({type: MembershipsDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get(&#x27;memberships/:userId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="176"
+                            class="link-to-prism">src/core/group/group.controller.ts:176</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>userId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipsDto.html" target="_self" >Promise&lt;MembershipsDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMembersOfGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getMembersOfGroup
+                        </b>
+                        <a href="#getMembersOfGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getMembersOfGroup(req, groupId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Get members of group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiOkResponse({type: MembershipsDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Get(&#x27;:groupId/members&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">src/core/group/group.controller.ts:197</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipsDto.html" target="_self" >Promise&lt;MembershipsDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inviteToGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            inviteToGroup
+                        </b>
+                        <a href="#inviteToGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inviteToGroup(req, groupId, targetUserId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Invite user to group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiCreatedResponse({type: MembershipDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Post(&#x27;:groupId/members/:userId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">src/core/group/group.controller.ts:262</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetUserId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipDto.html" target="_self" >Promise&lt;MembershipDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="joinGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            joinGroup
+                        </b>
+                        <a href="#joinGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>joinGroup(req, groupId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Join group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiCreatedResponse({type: MembershipDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Post(&#x27;:groupId/members/me&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/core/group/group.controller.ts:240</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipDto.html" target="_self" >Promise&lt;MembershipDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="leaveGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            leaveGroup
+                        </b>
+                        <a href="#leaveGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>leaveGroup(req, groupId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Leave group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiNoContentResponse()<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Delete(&#x27;:groupId/members/me&#x27;)<br />@HttpCode(HttpStatus.NO_CONTENT)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="289"
+                            class="link-to-prism">src/core/group/group.controller.ts:289</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="promote"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            promote
+                        </b>
+                        <a href="#promote"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>promote(req, groupId, targetUserId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Promote user to admin&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiCreatedResponse({type: MembershipDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Post(&#x27;:groupId/members/:userId/ban&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="351"
+                            class="link-to-prism">src/core/group/group.controller.ts:351</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetUserId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/MembershipDto.html" target="_self" >Promise&lt;MembershipDto&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeMemberOfGroup"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            removeMemberOfGroup
+                        </b>
+                        <a href="#removeMemberOfGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeMemberOfGroup(req, groupId, targetUserId)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Remove user from group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiNoContentResponse()<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Delete(&#x27;:groupId/members/:userId&#x27;)<br />@HttpCode(HttpStatus.NO_CONTENT)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="306"
+                            class="link-to-prism">src/core/group/group.controller.ts:306</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>targetUserId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            update
+                        </b>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(req, groupId, updateGroupDto: <a href="../classes/UpdateGroupDto.html">UpdateGroupDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOperation({summary: &#x27;Update group&#x27;})<br />@ApiParam({name: &#x27;groupId&#x27;})<br />@ApiOkResponse({type: GroupDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(GroupExceptionFilter)<br />@Patch(&#x27;:groupId&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/core/group/group.controller.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>groupId</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>updateGroupDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateGroupDto.html" target="_self" >UpdateGroupDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;GroupDto&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Request,
+  UseFilters,
+  UseGuards,
+} from &#x27;@nestjs/common&#x27;;
+import { GroupService } from &#x27;./group.service&#x27;;
+import { CreateGroupDto } from &#x27;./dto/create-group.dto&#x27;;
+import { JwtAuthGuard } from &#x27;../../common/guard/jwt-auth.guard&#x27;;
+import { GroupDto } from &#x27;./dto/group.dto&#x27;;
+import { GroupsDto } from &#x27;./dto/groups.dto&#x27;;
+import { UpdateGroupDto } from &#x27;./dto/update-group.dto&#x27;;
+import { GroupExceptionFilter } from &#x27;./filters/group-exception.filter&#x27;;
+import { MembershipsDto } from &#x27;./dto/memberships.dto&#x27;;
+import { MembershipDto } from &#x27;./dto/membership.dto&#x27;;
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiNoContentResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+} from &#x27;@nestjs/swagger&#x27;;
+import { BadRequestDto } from &#x27;../../common/dto/bad-request.dto&#x27;;
+
+@ApiTags(&#x27;groups&#x27;)
+@Controller(&#x27;groups&#x27;)
+export class GroupController {
+  constructor(private readonly groupService: GroupService) {}
+
+  @ApiOperation({ summary: &#x27;Create group&#x27; })
+  @ApiCreatedResponse({ type: CreateGroupDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // POST /groups
+  // service.create
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Post()
+  async create(
+    @Request() req,
+    @Body() createGroupDto: CreateGroupDto,
+  ): Promise&lt;GroupDto&gt; {
+    const dto &#x3D; new GroupDto();
+    dto.group &#x3D; await this.groupService.create(
+      req.user.sub,
+      createGroupDto.name,
+      createGroupDto.inviteOnly,
+    );
+    if (dto.group &#x3D;&#x3D;&#x3D; undefined) {
+      dto.group &#x3D; null;
+    }
+    return dto;
+  }
+
+  @ApiOperation({ summary: &#x27;Find groups&#x27; })
+  @ApiOkResponse({ type: GroupsDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups
+  // service.findMany
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get()
+  async findMany(
+    @Query(&#x27;name&#x27;) name?: string,
+    @Query(&#x27;inviteOnly&#x27;) inviteOnly?: boolean,
+  ): Promise&lt;GroupsDto&gt; {
+    const dto &#x3D; new GroupsDto();
+    [dto.groups, dto.count] &#x3D; await this.groupService.findMany({
+      name: name,
+      inviteOnly: inviteOnly,
+    });
+    return dto;
+  }
+
+  @ApiOperation({ summary: &#x27;Find group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiOkResponse({ type: GroupDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups/{groupId}
+  // service.findOne
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get(&#x27;:groupId&#x27;)
+  async findOne(@Param(&#x27;groupId&#x27;) groupId): Promise&lt;GroupDto&gt; {
+    const dto &#x3D; new GroupDto();
+    dto.group &#x3D; await this.groupService.findOne(groupId);
+    if (dto.group &#x3D;&#x3D;&#x3D; undefined) {
+      dto.group &#x3D; null;
+    }
+    return dto;
+  }
+
+  @ApiOperation({ summary: &#x27;Update group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiOkResponse({ type: GroupDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // PATCH /groups/{groupId}
+  // service.update
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Patch(&#x27;:groupId&#x27;)
+  async update(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Body() updateGroupDto: UpdateGroupDto,
+  ): Promise&lt;GroupDto&gt; {
+    const memberId &#x3D; req.user.sub;
+    const dto &#x3D; new GroupDto();
+    dto.group &#x3D; await this.groupService.update(
+      groupId,
+      memberId,
+      updateGroupDto,
+    );
+    return dto;
+  }
+
+  @ApiOperation({ summary: &#x27;Delete group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiNoContentResponse()
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // DELETE /groups/{groupId}
+  // service.delete
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Delete(&#x27;:groupId&#x27;)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async delete(@Request() req, @Param(&#x27;groupId&#x27;) groupId) {
+    const memberId &#x3D; req.user.sub;
+    await this.groupService.delete(groupId, memberId);
+  }
+
+  @ApiOperation({ summary: &#x27;Get memberships of me&#x27; })
+  @ApiOkResponse({ type: MembershipsDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups/memberships/me
+  // service.findMembershipOfUser
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get(&#x27;memberships/me&#x27;)
+  async getMembershipsOfMe(@Request() req): Promise&lt;MembershipsDto&gt; {
+    const userId &#x3D; req.user.sub;
+    const memberships &#x3D; await this.groupService.findMembershipsOfUser(userId);
+    return {
+      count: memberships.length,
+      memberships: memberships,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Get memberships of user&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiOkResponse({ type: MembershipsDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups/memberships/{userId}
+  // service.findMembershipOfUser
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get(&#x27;memberships/:userId&#x27;)
+  async getMembershipsOfUser(
+    @Request() req,
+    @Param(&#x27;userId&#x27;) userId,
+  ): Promise&lt;MembershipsDto&gt; {
+    const memberships &#x3D; await this.groupService.findMembershipsOfUser(userId);
+    return {
+      count: memberships.length,
+      memberships: memberships,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Get members of group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiOkResponse({ type: MembershipsDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups/{groupId}/members
+  // service.getMembers
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get(&#x27;:groupId/members&#x27;)
+  async getMembersOfGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+  ): Promise&lt;MembershipsDto&gt; {
+    const [members, count] &#x3D; await this.groupService.getMembers(groupId);
+    return {
+      count: count,
+      memberships: members,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Get member of group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiOkResponse({ type: MembershipDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // GET /groups/{groupId}/members/{userId}
+  // service.getMember
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Get(&#x27;:groupId/members/:userId&#x27;)
+  async getMemberOfGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Param(&#x27;userId&#x27;) userId,
+  ): Promise&lt;MembershipDto&gt; {
+    const member &#x3D; await this.groupService.getMember(groupId, userId);
+    return {
+      membership: member,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Join group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiCreatedResponse({ type: MembershipDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // POST /groups/{groupId}/members/me
+  // service.join
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Post(&#x27;:groupId/members/me&#x27;)
+  async joinGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+  ): Promise&lt;MembershipDto&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    const member &#x3D; await this.groupService.join(groupId, actingUserId);
+    return {
+      membership: member,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Invite user to group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiCreatedResponse({ type: MembershipDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // POST /groups/{groupId}/members/{userId}
+  // service.invite
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Post(&#x27;:groupId/members/:userId&#x27;)
+  async inviteToGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Param(&#x27;userId&#x27;) targetUserId,
+  ): Promise&lt;MembershipDto&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    const member &#x3D; await this.groupService.invite(
+      groupId,
+      actingUserId,
+      targetUserId,
+    );
+    return {
+      membership: member,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Leave group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiNoContentResponse()
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // DELETE /groups/{groupId}/members/me
+  // service.leave
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Delete(&#x27;:groupId/members/me&#x27;)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async leaveGroup(@Request() req, @Param(&#x27;groupId&#x27;) groupId): Promise&lt;void&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    await this.groupService.leave(groupId, actingUserId);
+  }
+
+  @ApiOperation({ summary: &#x27;Remove user from group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiNoContentResponse()
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // DELETE /groups/{groupId}/members/{userId}
+  // service.removeMember
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Delete(&#x27;:groupId/members/:userId&#x27;)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async removeMemberOfGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Param(&#x27;userId&#x27;) targetUserId,
+  ): Promise&lt;void&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    await this.groupService.removeMember(groupId, actingUserId, targetUserId);
+  }
+
+  @ApiOperation({ summary: &#x27;Ban user from group&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiOkResponse({ type: MembershipDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // POST /groups/{groupId}/members/{userId}/ban
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Post(&#x27;:groupId/members/:userId/ban&#x27;)
+  async banFromGroup(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Param(&#x27;userId&#x27;) targetUserId,
+  ): Promise&lt;MembershipDto&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    const member &#x3D; await this.groupService.ban(
+      groupId,
+      actingUserId,
+      targetUserId,
+    );
+    return {
+      membership: member,
+    };
+  }
+
+  @ApiOperation({ summary: &#x27;Promote user to admin&#x27; })
+  @ApiParam({ name: &#x27;groupId&#x27; })
+  @ApiParam({ name: &#x27;userId&#x27; })
+  @ApiCreatedResponse({ type: MembershipDto })
+  @ApiBadRequestResponse({ type: BadRequestDto })
+  @ApiBearerAuth()
+  // POST /groups/{groupId}/members/{userId}/promote
+  @UseGuards(JwtAuthGuard)
+  @UseFilters(GroupExceptionFilter)
+  @Post(&#x27;:groupId/members/:userId/ban&#x27;)
+  async promote(
+    @Request() req,
+    @Param(&#x27;groupId&#x27;) groupId,
+    @Param(&#x27;userId&#x27;) targetUserId,
+  ): Promise&lt;MembershipDto&gt; {
+    const actingUserId: string &#x3D; req.user.sub;
+    const member &#x3D; await this.groupService.promoteToAdmin(
+      groupId,
+      actingUserId,
+      targetUserId,
+    );
+    return {
+      membership: member,
+    };
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'GroupController.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
