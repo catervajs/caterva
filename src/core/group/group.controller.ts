@@ -347,7 +347,7 @@ export class GroupController {
   // POST /groups/{groupId}/members/{userId}/promote
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
-  @Post(':groupId/members/:userId/ban')
+  @Post(':groupId/members/:userId/promote')
   async promote(
     @Request() req,
     @Param('groupId') groupId,

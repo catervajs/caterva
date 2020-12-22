@@ -65,10 +65,7 @@ export class FriendController {
     summary: 'Find relations of any user',
   })
   @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusesDto,
-    status: 200,
-  })
+  @ApiParam({ name: 'aId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':aId')
@@ -83,6 +80,8 @@ export class FriendController {
     summary: 'Find relation of any two users',
   })
   @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
+  @ApiParam({ name: 'aId' })
+  @ApiParam({ name: 'bId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':aId/:bId')
