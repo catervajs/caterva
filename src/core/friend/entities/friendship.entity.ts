@@ -28,16 +28,16 @@ export class Friendship {
   status: FriendshipOneWayRelationStatus;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt?: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt?: Date;
 
   @OneToOne(() => Account)
   @JoinColumn()
-  a: Account;
+  a?: Account;
 
   @OneToOne(() => Account)
   @JoinColumn()
-  b: Account;
+  b?: Account;
 }
