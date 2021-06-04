@@ -31,52 +31,61 @@ import { UpdateEntryDto } from './dto/update-entry.dto';
 export class LeaderboardController {
   constructor(private readonly leaderboardService: LeaderboardService) {}
 
+  /**
+   * Get leaderboard entry for current user
+   * @param req
+   * @param leaderboardId
+   */
   @ApiOperation({ summary: 'Get leaderboard entry for current user' })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: 'leaderboardId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':leaderboardId/me')
   @UseFilters(LeaderboardExceptionFilter)
   async getEntryOfMe(
     @Request() req,
-    @Param('leaderboardId') leaderboardId,
+    @Param('leaderboardId') leaderboardId: string,
   ): Promise<LeaderboardEntryDto> {
     const userId = req.user.sub;
     return this.leaderboardService.getEntry(leaderboardId, userId);
   }
 
+  /**
+   * Get leaderboard entry for user
+   * @param req
+   * @param leaderboardId
+   * @param userId
+   */
   @ApiOperation({ summary: 'Get leaderboard entry for user' })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: 'leaderboardId' })
-  @ApiParam({ name: 'userId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Get(':leaderboardId/:userId')
   async getEntry(
     @Request() req,
-    @Param('leaderboardId') leaderboardId,
-    @Param('userId') userId,
+    @Param('leaderboardId') leaderboardId: string,
+    @Param('userId') userId: string,
   ): Promise<LeaderboardEntryDto> {
     return this.leaderboardService.getEntry(leaderboardId, userId);
   }
 
+  /**
+   * Get leaderboard entries
+   * @param req
+   * @param leaderboardId
+   * @param offset
+   * @param limit
+   */
   @ApiOperation({ summary: 'Get leaderboard entries' })
-  @ApiOkResponse({ type: LeaderboardEntriesDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: 'leaderboardId' })
-  @ApiQuery({ name: 'offset' })
-  @ApiQuery({ name: 'limit' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Get(':leaderboardId')
   async getEntries(
     @Request() req,
-    @Param('leaderboardId') leaderboardId,
+    @Param('leaderboardId') leaderboardId: string,
     @Query('offset') offset: string = undefined,
     @Query('limit') limit: string = undefined,
   ): Promise<LeaderboardEntriesDto> {
@@ -86,17 +95,21 @@ export class LeaderboardController {
     });
   }
 
+  /**
+   * Update leaderboard entry of user
+   * @param req
+   * @param leaderboardId
+   * @param updateEntryDto
+   */
   @ApiOperation({ summary: 'Update leaderboard entry of user' })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: 'leaderboardId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Post(':leaderboardId')
   async updateEntry(
     @Request() req,
-    @Param('leaderboardId') leaderboardId,
+    @Param('leaderboardId') leaderboardId: string,
     @Body() updateEntryDto: UpdateEntryDto,
   ): Promise<LeaderboardEntryDto> {
     const userId = req.user.sub;

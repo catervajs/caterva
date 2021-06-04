@@ -33,11 +33,11 @@ export class AuthController {
     private readonly jwtService: JwtService,
   ) {}
 
-  @ApiOperation({
-    description: 'Authenticate account with Device ID',
-    summary: 'Auth with deviceId',
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with DeviceID
+   * @param authDto
+   */
+  // todo: revise, should i remove these
   @ApiBadRequestResponse()
   @Post('device')
   @HttpCode(HttpStatus.OK)
@@ -55,11 +55,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: 'Authenticate account with Google ID',
-    summary: 'Auth with googleId',
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Google ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post('google')
   @HttpCode(HttpStatus.OK)
@@ -77,11 +76,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: 'Authenticate account with Apple ID',
-    summary: 'Auth with appleId',
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Apple ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post('apple')
   @HttpCode(HttpStatus.OK)
@@ -99,11 +97,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: 'Authenticate account with Facebook ID',
-    summary: 'Auth with facebookId',
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Facebook ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post('facebook')
   @HttpCode(HttpStatus.OK)

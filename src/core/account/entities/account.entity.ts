@@ -10,47 +10,37 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Account {
-  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ApiProperty()
   @Index({ unique: true })
   @Column({ type: 'text' })
-  deviceId: string;
+  deviceId?: string;
 
-  @ApiProperty()
   @Index({ unique: true })
   @Column({ type: 'text', nullable: true })
-  googleId?: string;
+  googleId?: string | null;
 
-  @ApiProperty()
   @Index({ unique: true })
   @Column({ type: 'text', nullable: true })
-  appleId?: string;
+  appleId?: string | null;
 
-  @ApiProperty()
   @Index({ unique: true })
   @Column({ type: 'text', nullable: true })
-  facebookId?: string;
+  facebookId?: string | null;
 
-  @ApiProperty()
   @Column({ type: 'text', nullable: true })
-  location?: string;
+  location?: string | null;
 
-  @ApiProperty()
   @Column({ type: 'text', nullable: true })
-  language?: string;
+  language?: string | null;
 
-  @ApiProperty()
   @Column({ type: 'jsonb', nullable: true })
-  metadata;
+  metadata?: any | null;
 
-  @ApiProperty()
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt?: Date;
 
-  @ApiProperty()
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt?: Date;
 }

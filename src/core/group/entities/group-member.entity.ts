@@ -6,15 +6,12 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class GroupMember {
-  @ApiProperty()
   @PrimaryColumn()
   groupId: string;
 
-  @ApiProperty()
   @PrimaryColumn()
   memberId: string;
 
-  @ApiProperty()
   @Column({
     type: 'enum',
     enum: GroupMembershipStatus,
@@ -22,11 +19,9 @@ export class GroupMember {
   })
   membershipStatus: GroupMembershipStatus;
 
-  @ApiProperty({ type: () => Group })
   @ManyToOne(() => Group, (group) => group.members, { onDelete: 'CASCADE' })
-  group: Group;
+  group?: Group;
 
-  @ApiProperty()
   @ManyToOne(() => Account, { onDelete: 'CASCADE' })
-  member: Account;
+  member?: Account;
 }

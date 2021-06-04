@@ -8,21 +8,15 @@ import {
   Body,
   Delete,
   UseFilters,
+  HttpStatus,
+  HttpCode,
 } from '@nestjs/common';
 import { FriendService } from './friend.service';
 import { FriendshipTwoWayRelationStatusesDto } from './dto/friendship-two-way-relation-statuses.dto';
 import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 import { FriendshipTwoWayRelationStatusDto } from './dto/friendship-two-way-relation-status.dto';
 import { ReferenceFriendDto } from './dto/reference-friend.dto';
-import {
-  ApiBearerAuth,
-  ApiCreatedResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiParam,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SelfReferenceErrorFilter } from './self-reference-error.filter';
 
 @ApiTags('friends')
@@ -30,10 +24,13 @@ import { SelfReferenceErrorFilter } from './self-reference-error.filter';
 export class FriendController {
   constructor(private readonly friendService: FriendService) {}
 
+  /**
+   * Find relations of this user
+   * @param req
+   */
   @ApiOperation({
     summary: 'Find relations of this user',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')
@@ -43,68 +40,81 @@ export class FriendController {
     return this.friendService.getAll(req.user.sub);
   }
 
+  /**
+   * Find relation of current user and any other user
+   * @param req
+   * @param otherId
+   */
   @ApiOperation({
     summary: 'Find relation of this user and any other user',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
-  @ApiParam({ name: 'otherId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me/:otherId')
   @UseFilters(new SelfReferenceErrorFilter())
   async findRelationOfMeAndOther(
     @Request() req,
-    @Param('otherId') otherId,
+    @Param('otherId') otherId: string,
   ): Promise<FriendshipTwoWayRelationStatusDto> {
     const dto = new FriendshipTwoWayRelationStatusDto();
     dto.status = await this.friendService.get(req.user.sub, otherId);
     return dto;
   }
 
+  /**
+   * Find relations of any user
+   * @param req
+   * @param aId
+   */
   @ApiOperation({
     summary: 'Find relations of any user',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
-  @ApiParam({ name: 'aId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':aId')
   async findRelations(
     @Request() req,
-    @Param('aId') aId,
+    @Param('aId') aId: string,
   ): Promise<FriendshipTwoWayRelationStatusesDto> {
     return this.friendService.getAll(aId);
   }
 
+  /**
+   * Find relation of any two users
+   * @param req
+   * @param aId
+   * @param bId
+   */
   @ApiOperation({
     summary: 'Find relation of any two users',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
-  @ApiParam({ name: 'aId' })
-  @ApiParam({ name: 'bId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':aId/:bId')
   @UseFilters(new SelfReferenceErrorFilter())
   async findRelationWithOther(
     @Request() req,
-    @Param('aId') aId,
-    @Param('bId') bId,
+    @Param('aId') aId: string,
+    @Param('bId') bId: string,
   ): Promise<FriendshipTwoWayRelationStatusDto> {
     const dto = new FriendshipTwoWayRelationStatusDto();
     dto.status = await this.friendService.get(aId, bId);
     return dto;
   }
 
+  /**
+   * Send or accept friend request
+   * @param req
+   * @param addFriendDto
+   */
   @ApiOperation({
     summary: 'Send or accept friend request',
   })
-  @ApiCreatedResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me')
   @UseFilters(new SelfReferenceErrorFilter())
-  async add(
+  async addFriend(
     @Request() req,
     @Body() addFriendDto: ReferenceFriendDto,
   ): Promise<FriendshipTwoWayRelationStatusDto> {
@@ -113,15 +123,19 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Remove friendship or cancel friend request
+   * @param req
+   * @param removeFriendDto
+   */
   @ApiOperation({
     summary: 'Remove friendship or cancel friend request',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete('me')
   @UseFilters(new SelfReferenceErrorFilter())
-  async remove(
+  async removeFriend(
     @Request() req,
     @Body() removeFriendDto: ReferenceFriendDto,
   ): Promise<FriendshipTwoWayRelationStatusDto> {
@@ -133,13 +147,18 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Block user
+   * @param req
+   * @param blockFriendDto
+   */
   @ApiOperation({
     summary: 'Block user',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me/block')
+  @HttpCode(HttpStatus.OK)
   @UseFilters(new SelfReferenceErrorFilter())
   async block(
     @Request() req,
@@ -153,13 +172,18 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Unblock user
+   * @param req
+   * @param unblockFriendDto
+   */
   @ApiOperation({
     summary: 'Unblock user',
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('me/unblock')
+  @HttpCode(HttpStatus.OK)
   @UseFilters(new SelfReferenceErrorFilter())
   async unblock(
     @Request() req,

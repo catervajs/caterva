@@ -39,16 +39,18 @@ import { BadRequestDto } from '../../common/dto/bad-request.dto';
 export class GroupController {
   constructor(private readonly groupService: GroupService) {}
 
+  /**
+   * Create group
+   * @param req
+   * @param createGroupDto
+   */
   @ApiOperation({ summary: 'Create group' })
-  @ApiCreatedResponse({ type: CreateGroupDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // POST /groups
-  // service.create
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Post()
-  async create(
+  async createGroup(
     @Request() req,
     @Body() createGroupDto: CreateGroupDto,
   ): Promise<GroupDto> {
@@ -64,16 +66,18 @@ export class GroupController {
     return dto;
   }
 
+  /**
+   * Find groups
+   * @param name
+   * @param inviteOnly
+   */
   @ApiOperation({ summary: 'Find groups' })
-  @ApiOkResponse({ type: GroupsDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups
-  // service.findMany
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get()
-  async findMany(
+  async findGroups(
     @Query('name') name?: string,
     @Query('inviteOnly') inviteOnly?: boolean,
   ): Promise<GroupsDto> {
@@ -85,17 +89,17 @@ export class GroupController {
     return dto;
   }
 
+  /**
+   * Find single group
+   * @param groupId
+   */
   @ApiOperation({ summary: 'Find group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiOkResponse({ type: GroupDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups/{groupId}
-  // service.findOne
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get(':groupId')
-  async findOne(@Param('groupId') groupId): Promise<GroupDto> {
+  async findGroup(@Param('groupId') groupId: string): Promise<GroupDto> {
     const dto = new GroupDto();
     dto.group = await this.groupService.findOne(groupId);
     if (dto.group === undefined) {
@@ -104,19 +108,21 @@ export class GroupController {
     return dto;
   }
 
+  /**
+   * Update group
+   * @param req
+   * @param groupId
+   * @param updateGroupDto
+   */
   @ApiOperation({ summary: 'Update group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiOkResponse({ type: GroupDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // PATCH /groups/{groupId}
-  // service.update
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Patch(':groupId')
-  async update(
+  async updateGroup(
     @Request() req,
-    @Param('groupId') groupId,
+    @Param('groupId') groupId: string,
     @Body() updateGroupDto: UpdateGroupDto,
   ): Promise<GroupDto> {
     const memberId = req.user.sub;
@@ -129,28 +135,30 @@ export class GroupController {
     return dto;
   }
 
+  /**
+   * Delete group
+   * @param req
+   * @param groupId
+   */
   @ApiOperation({ summary: 'Delete group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiNoContentResponse()
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // DELETE /groups/{groupId}
-  // service.delete
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Delete(':groupId')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async delete(@Request() req, @Param('groupId') groupId) {
+  async deleteGroup(@Request() req, @Param('groupId') groupId: string) {
     const memberId = req.user.sub;
     await this.groupService.delete(groupId, memberId);
   }
 
+  /**
+   * Get memberships of current user
+   * @param req
+   */
   @ApiOperation({ summary: 'Get memberships of me' })
-  @ApiOkResponse({ type: MembershipsDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups/memberships/me
-  // service.findMembershipOfUser
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get('memberships/me')
@@ -163,19 +171,20 @@ export class GroupController {
     };
   }
 
+  /**
+   * Get memberships of user
+   * @param req
+   * @param userId
+   */
   @ApiOperation({ summary: 'Get memberships of user' })
-  @ApiParam({ name: 'userId' })
-  @ApiOkResponse({ type: MembershipsDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups/memberships/{userId}
-  // service.findMembershipOfUser
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get('memberships/:userId')
   async getMembershipsOfUser(
     @Request() req,
-    @Param('userId') userId,
+    @Param('userId') userId: string,
   ): Promise<MembershipsDto> {
     const memberships = await this.groupService.findMembershipsOfUser(userId);
     return {
@@ -184,19 +193,20 @@ export class GroupController {
     };
   }
 
+  /**
+   * Get members of group
+   * @param req
+   * @param groupId
+   */
   @ApiOperation({ summary: 'Get members of group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiOkResponse({ type: MembershipsDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups/{groupId}/members
-  // service.getMembers
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get(':groupId/members')
   async getMembersOfGroup(
     @Request() req,
-    @Param('groupId') groupId,
+    @Param('groupId') groupId: string,
   ): Promise<MembershipsDto> {
     const [members, count] = await this.groupService.getMembers(groupId);
     return {
@@ -205,21 +215,22 @@ export class GroupController {
     };
   }
 
+  /**
+   * Get member of group
+   * @param req
+   * @param groupId
+   * @param userId
+   */
   @ApiOperation({ summary: 'Get member of group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiParam({ name: 'userId' })
-  @ApiOkResponse({ type: MembershipDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // GET /groups/{groupId}/members/{userId}
-  // service.getMember
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Get(':groupId/members/:userId')
   async getMemberOfGroup(
     @Request() req,
-    @Param('groupId') groupId,
-    @Param('userId') userId,
+    @Param('groupId') groupId: string,
+    @Param('userId') userId: string,
   ): Promise<MembershipDto> {
     const member = await this.groupService.getMember(groupId, userId);
     return {
@@ -227,19 +238,20 @@ export class GroupController {
     };
   }
 
+  /**
+   * Join group
+   * @param req
+   * @param groupId
+   */
   @ApiOperation({ summary: 'Join group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiCreatedResponse({ type: MembershipDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // POST /groups/{groupId}/members/me
-  // service.join
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Post(':groupId/members/me')
   async joinGroup(
     @Request() req,
-    @Param('groupId') groupId,
+    @Param('groupId') groupId: string,
   ): Promise<MembershipDto> {
     const actingUserId: string = req.user.sub;
     const member = await this.groupService.join(groupId, actingUserId);
@@ -248,21 +260,22 @@ export class GroupController {
     };
   }
 
+  /**
+   * Invite user to group
+   * @param req
+   * @param groupId
+   * @param targetUserId
+   */
   @ApiOperation({ summary: 'Invite user to group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiParam({ name: 'userId' })
-  @ApiCreatedResponse({ type: MembershipDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // POST /groups/{groupId}/members/{userId}
-  // service.invite
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Post(':groupId/members/:userId')
   async inviteToGroup(
     @Request() req,
-    @Param('groupId') groupId,
-    @Param('userId') targetUserId,
+    @Param('groupId') groupId: string,
+    @Param('userId') targetUserId: string,
   ): Promise<MembershipDto> {
     const actingUserId: string = req.user.sub;
     const member = await this.groupService.invite(
@@ -275,57 +288,64 @@ export class GroupController {
     };
   }
 
+  /**
+   * Leave group
+   * @param req
+   * @param groupId
+   */
   @ApiOperation({ summary: 'Leave group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiNoContentResponse()
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // DELETE /groups/{groupId}/members/me
-  // service.leave
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Delete(':groupId/members/me')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async leaveGroup(@Request() req, @Param('groupId') groupId): Promise<void> {
+  async leaveGroup(
+    @Request() req,
+    @Param('groupId') groupId: string,
+  ): Promise<void> {
     const actingUserId: string = req.user.sub;
     await this.groupService.leave(groupId, actingUserId);
   }
 
+  /**
+   * Remove user from group
+   * @param req
+   * @param groupId
+   * @param targetUserId
+   */
   @ApiOperation({ summary: 'Remove user from group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiParam({ name: 'userId' })
-  @ApiNoContentResponse()
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // DELETE /groups/{groupId}/members/{userId}
-  // service.removeMember
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Delete(':groupId/members/:userId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async removeMemberOfGroup(
     @Request() req,
-    @Param('groupId') groupId,
-    @Param('userId') targetUserId,
+    @Param('groupId') groupId: string,
+    @Param('userId') targetUserId: string,
   ): Promise<void> {
     const actingUserId: string = req.user.sub;
     await this.groupService.removeMember(groupId, actingUserId, targetUserId);
   }
 
+  /**
+   * Ban user from group
+   * @param req
+   * @param groupId
+   * @param targetUserId
+   */
   @ApiOperation({ summary: 'Ban user from group' })
-  @ApiParam({ name: 'groupId' })
-  @ApiParam({ name: 'userId' })
-  @ApiOkResponse({ type: MembershipDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // POST /groups/{groupId}/members/{userId}/ban
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Post(':groupId/members/:userId/ban')
   async banFromGroup(
     @Request() req,
-    @Param('groupId') groupId,
-    @Param('userId') targetUserId,
+    @Param('groupId') groupId: string,
+    @Param('userId') targetUserId: string,
   ): Promise<MembershipDto> {
     const actingUserId: string = req.user.sub;
     const member = await this.groupService.ban(
@@ -338,20 +358,22 @@ export class GroupController {
     };
   }
 
+  /**
+   * Promote user to admin
+   * @param req
+   * @param groupId
+   * @param targetUserId
+   */
   @ApiOperation({ summary: 'Promote user to admin' })
-  @ApiParam({ name: 'groupId' })
-  @ApiParam({ name: 'userId' })
-  @ApiCreatedResponse({ type: MembershipDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
   @ApiBearerAuth()
-  // POST /groups/{groupId}/members/{userId}/promote
   @UseGuards(JwtAuthGuard)
   @UseFilters(GroupExceptionFilter)
   @Post(':groupId/members/:userId/promote')
   async promote(
     @Request() req,
-    @Param('groupId') groupId,
-    @Param('userId') targetUserId,
+    @Param('groupId') groupId: string,
+    @Param('userId') targetUserId: string,
   ): Promise<MembershipDto> {
     const actingUserId: string = req.user.sub;
     const member = await this.groupService.promoteToAdmin(

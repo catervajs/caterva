@@ -103,7 +103,12 @@ export class LeaderboardService {
   ): Promise<LeaderboardEntryDto> {
     const client = this.redisService.getClient();
 
-    const updatedEntryCount = await client.zadd(leaderboardId, score, userId);
+    const updatedEntryCount = await client.zadd(
+      leaderboardId,
+      'GT',
+      score,
+      userId,
+    );
     if (updatedEntryCount !== 1) {
       throw new CouldNotUpdateLeaderboardEntryError(
         `Leaderboard entry of user "${userId}" in leaderboard "${leaderboardId}" could not be updated with score "${score}"`,

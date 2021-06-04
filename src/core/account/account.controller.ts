@@ -6,6 +6,8 @@ import {
   UseGuards,
   Request,
   Patch,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { AccountService } from './account.service';
 import { CreateAccountDto } from './dto/create-account.dto';
@@ -26,39 +28,36 @@ import { JwtAuthGuard } from '../../common/guard/jwt-auth.guard';
 export class AccountController {
   constructor(private readonly accountService: AccountService) {}
 
-  @ApiOperation({
-    summary: 'Create new account',
-    description: 'Create new account',
-  })
-  @ApiCreatedResponse({
-    type: Account,
-  })
+  /**
+   * Create account
+   * @param createAccountDto
+   */
+  @HttpCode(HttpStatus.CREATED)
   @Post()
-  create(@Body() createAccountDto: CreateAccountDto): Promise<Account> {
+  createAccount(@Body() createAccountDto: CreateAccountDto): Promise<Account> {
     return this.accountService.create(createAccountDto);
   }
 
-  @ApiOperation({
-    summary: 'Get own account',
-    description: 'Get account info (derives account from token)',
-  })
-  @ApiOkResponse({ type: Account })
+  /**
+   * Get current account
+   * @param req
+   */
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  async find(@Request() req): Promise<Account> {
+  async getCurrentAccount(@Request() req): Promise<Account> {
     return this.accountService.findOne(req.user.sub);
   }
 
-  @ApiOperation({
-    summary: 'Update own account',
-    description: 'Update account info (derives account from token)',
-  })
-  @ApiOkResponse({ type: Account })
+  /**
+   * Update current account
+   * @param req
+   * @param updateAccountDto
+   */
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch()
-  async update(
+  async updateCurrentAccount(
     @Request() req,
     @Body() updateAccountDto: UpdateAccountDto,
   ): Promise<Account> {

@@ -27,18 +27,18 @@ export class Profile {
 
   @ApiProperty()
   @Column({ type: 'integer', default: 1 })
-  level: number;
+  level?: number;
 
   @ApiPropertyOptional()
   @OneToOne(() => Account)
   @JoinColumn()
-  user: string;
+  user?: string;
 
   @ApiProperty()
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt?: Date;
 
   @ApiProperty()
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt?: Date;
 }
