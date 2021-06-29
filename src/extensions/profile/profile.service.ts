@@ -27,6 +27,8 @@ export class ProfileService {
     profile.userId = userId;
     profile.displayName = createProfileDto.displayName;
     profile.avatarUrl = createProfileDto?.avatarUrl;
+    profile.language = createProfileDto?.language;
+    profile.location = createProfileDto?.location;
     return this.profileRepository.save(profile);
   }
 
@@ -44,6 +46,8 @@ export class ProfileService {
     }
     profile.displayName = updateProfileDto?.displayName ?? profile.displayName;
     profile.avatarUrl = updateProfileDto?.avatarUrl ?? profile.avatarUrl;
+    profile.language = updateProfileDto?.language ?? profile.language;
+    profile.location = updateProfileDto?.location ?? profile.location;
     return this.profileRepository.save(profile);
   }
 }

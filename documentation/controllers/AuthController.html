@@ -139,20 +139,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({description: &#x27;Authenticate account with Apple ID&#x27;, summary: &#x27;Auth with appleId&#x27;})<br />@ApiOkResponse({type: AccessTokenDto})<br />@ApiBadRequestResponse()<br />@Post(&#x27;apple&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
+                    <code>@ApiBadRequestResponse()<br />@Post(&#x27;apple&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/core/account/auth.controller.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/core/account/auth.controller.ts:86</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Authenticate with Apple ID</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -218,7 +220,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({description: &#x27;Authenticate account with Device ID&#x27;, summary: &#x27;Auth with deviceId&#x27;})<br />@ApiOkResponse({type: AccessTokenDto})<br />@ApiBadRequestResponse()<br />@Post(&#x27;device&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
+                    <code>@ApiBadRequestResponse()<br />@Post(&#x27;device&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
                 </td>
             </tr>
 
@@ -232,6 +234,8 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Authenticate with DeviceID</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -297,20 +301,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({description: &#x27;Authenticate account with Facebook ID&#x27;, summary: &#x27;Auth with facebookId&#x27;})<br />@ApiOkResponse({type: AccessTokenDto})<br />@ApiBadRequestResponse()<br />@Post(&#x27;facebook&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
+                    <code>@ApiBadRequestResponse()<br />@Post(&#x27;facebook&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">src/core/account/auth.controller.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/core/account/auth.controller.ts:107</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Authenticate with Facebook ID</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -376,20 +382,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({description: &#x27;Authenticate account with Google ID&#x27;, summary: &#x27;Auth with googleId&#x27;})<br />@ApiOkResponse({type: AccessTokenDto})<br />@ApiBadRequestResponse()<br />@Post(&#x27;google&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
+                    <code>@ApiBadRequestResponse()<br />@Post(&#x27;google&#x27;)<br />@HttpCode(HttpStatus.OK)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/core/account/auth.controller.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/core/account/auth.controller.ts:65</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Authenticate with Google ID</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -469,11 +477,11 @@ export class AuthController {
     private readonly jwtService: JwtService,
   ) {}
 
-  @ApiOperation({
-    description: &#x27;Authenticate account with Device ID&#x27;,
-    summary: &#x27;Auth with deviceId&#x27;,
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with DeviceID
+   * @param authDto
+   */
+  // todo: revise, should i remove these
   @ApiBadRequestResponse()
   @Post(&#x27;device&#x27;)
   @HttpCode(HttpStatus.OK)
@@ -491,11 +499,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: &#x27;Authenticate account with Google ID&#x27;,
-    summary: &#x27;Auth with googleId&#x27;,
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Google ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post(&#x27;google&#x27;)
   @HttpCode(HttpStatus.OK)
@@ -513,11 +520,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: &#x27;Authenticate account with Apple ID&#x27;,
-    summary: &#x27;Auth with appleId&#x27;,
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Apple ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post(&#x27;apple&#x27;)
   @HttpCode(HttpStatus.OK)
@@ -535,11 +541,10 @@ export class AuthController {
     return { accessToken: _generateJwt(this.jwtService, account) };
   }
 
-  @ApiOperation({
-    description: &#x27;Authenticate account with Facebook ID&#x27;,
-    summary: &#x27;Auth with facebookId&#x27;,
-  })
-  @ApiOkResponse({ type: AccessTokenDto })
+  /**
+   * Authenticate with Facebook ID
+   * @param authDto
+   */
   @ApiBadRequestResponse()
   @Post(&#x27;facebook&#x27;)
   @HttpCode(HttpStatus.OK)

@@ -177,14 +177,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:45</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get entries in leaderboard</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -261,14 +263,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:19</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get entry of user in a leaderboard</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -345,14 +349,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.service.ts:99</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Update users score in leaderboard</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -436,6 +442,11 @@ export class CouldNotUpdateLeaderboardEntryError extends _BaseLeaderboardExcepti
 export class LeaderboardService {
   constructor(private readonly redisService: RedisService) {}
 
+  /**
+   * Get entry of user in a leaderboard
+   * @param leaderboardId
+   * @param userId
+   */
   async getEntry(
     leaderboardId: string,
     userId: string,
@@ -457,6 +468,11 @@ export class LeaderboardService {
     };
   }
 
+  /**
+   * Get entries in leaderboard
+   * @param leaderboardId
+   * @param options
+   */
   async getEntries(
     leaderboardId: string,
     options?: {
@@ -505,6 +521,12 @@ export class LeaderboardService {
     };
   }
 
+  /**
+   * Update users score in leaderboard
+   * @param leaderboardId
+   * @param userId
+   * @param score
+   */
   async updateEntry(
     leaderboardId: string,
     userId: string,
@@ -512,7 +534,12 @@ export class LeaderboardService {
   ): Promise&lt;LeaderboardEntryDto&gt; {
     const client &#x3D; this.redisService.getClient();
 
-    const updatedEntryCount &#x3D; await client.zadd(leaderboardId, score, userId);
+    const updatedEntryCount &#x3D; await client.zadd(
+      leaderboardId,
+      &#x27;GT&#x27;,
+      score,
+      userId,
+    );
     if (updatedEntryCount !&#x3D;&#x3D; 1) {
       throw new CouldNotUpdateLeaderboardEntryError(
         &#x60;Leaderboard entry of user &quot;${userId}&quot; in leaderboard &quot;${leaderboardId}&quot; could not be updated with score &quot;${score}&quot;&#x60;,

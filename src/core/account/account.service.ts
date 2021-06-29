@@ -20,8 +20,6 @@ export class AccountService {
     account.deviceId = createAccountDto.deviceId;
     account.appleId = createAccountDto.appleId;
     account.googleId = createAccountDto.googleId;
-    account.location = createAccountDto.location;
-    account.language = createAccountDto.language;
     return this.accountRepository.save(account);
   }
 
@@ -38,8 +36,6 @@ export class AccountService {
     account.deviceId = updateAccountDto.deviceId ?? account.deviceId;
     account.appleId = updateAccountDto.appleId ?? account.appleId;
     account.googleId = updateAccountDto.googleId ?? account.googleId;
-    account.language = updateAccountDto.language ?? account.language;
-    account.location = updateAccountDto.location ?? account.location;
     return this.accountRepository.save(account);
   }
 

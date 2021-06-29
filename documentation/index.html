@@ -43,17 +43,21 @@
 <ul>
 <li><code>DATABASE_URL</code> for Postgres DSN</li>
 <li><code>REDIS_URL</code> for Redis</li>
-<li><code>SECRET</code> for JWT Secrete</li>
+<li><code>SECRET</code> for JWT Secret</li>
 </ul>
 <h3 id="run">Run</h3>
 <div><pre class="line-numbers"><code class="language-bash">$ git clone https://github.com/catervajs/caterva.git
 $ npm install
 $ npm run start</code></pre></div><h2 id="openapi-specifications">OpenAPI Specifications</h2>
-<p>After launching the project, Swagger UI can be accessed through <code>/api</code></p>
-<p>Alternatively, OpenAPI specification can be downloaded as a JSON file from <code>/api-json</code>, and used for generating client libraries</p>
+<p>After launching the project, Swagger UI can be accessed through <code>/api</code>.</p>
+<p>Alternatively, OpenAPI specification can be downloaded as a JSON file from <code>/api-json</code>, and used for generating client libraries.</p>
 <h1 id="modules-documentation">Modules Documentation</h1>
-<p>Latest documentation is available in the documentation directory</p>
-<p>Documentation can be generated and viewed with <code>$npm run document</code></p>
+<p>Compodoc documentation is available in the documentation directory.</p>
+<p>Documentation can be generated and viewed with <code>$npm run document</code>.</p>
+<h1 id="plugin-development">Plugin Development</h1>
+<p>It is recommended to read through the <a href="https://docs.nestjs.com">NestJS documentation</a> for modules and DI concepts.</p>
+<p>After cloning the project, you can create custom modules under the extensions directory, import core services into the modules and register modules to the ExtensionsModule module for them to take effect.</p>
+<p>Two example modules, wallet and profile modules are provided under the extensions diretory. </p>
 
 
 

@@ -261,8 +261,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/extensions/profile/profile.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/extensions/profile/profile.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -333,8 +333,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/extensions/profile/profile.service.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/extensions/profile/profile.service.ts:39</a></div>
                 </td>
             </tr>
 
@@ -428,6 +428,8 @@ export class ProfileService {
     profile.userId &#x3D; userId;
     profile.displayName &#x3D; createProfileDto.displayName;
     profile.avatarUrl &#x3D; createProfileDto?.avatarUrl;
+    profile.language &#x3D; createProfileDto?.language;
+    profile.location &#x3D; createProfileDto?.location;
     return this.profileRepository.save(profile);
   }
 
@@ -445,6 +447,8 @@ export class ProfileService {
     }
     profile.displayName &#x3D; updateProfileDto?.displayName ?? profile.displayName;
     profile.avatarUrl &#x3D; updateProfileDto?.avatarUrl ?? profile.avatarUrl;
+    profile.language &#x3D; updateProfileDto?.language ?? profile.language;
+    profile.location &#x3D; updateProfileDto?.location ?? profile.location;
     return this.profileRepository.save(profile);
   }
 }

@@ -80,12 +80,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#entries">entries</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#limit">limit</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#offset">offset</a>
                             </li>
                         </ul>
@@ -114,6 +117,7 @@
                         <a name="entries"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             entries</b>
                             <a href="#entries"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -125,18 +129,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty({type: undefined})<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -150,6 +145,7 @@
                         <a name="limit"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             limit</b>
                             <a href="#limit"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -161,18 +157,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -186,6 +173,7 @@
                         <a name="offset"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             offset</b>
                             <a href="#offset"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -197,18 +185,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:6</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entries.dto.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -227,18 +206,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { LeaderboardEntryDto } from &#x27;./leaderboard-entry.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { LeaderboardEntryDto } from &#x27;./leaderboard-entry.dto&#x27;;
 
 export class LeaderboardEntriesDto {
-  @ApiProperty()
-  offset: number;
-
-  @ApiProperty()
-  limit: number;
-
-  @ApiProperty({ type: [LeaderboardEntryDto] })
-  entries: LeaderboardEntryDto[];
+  offset?: number;
+  limit?: number;
+  entries?: LeaderboardEntryDto[];
 }
 </code></pre>
     </div>

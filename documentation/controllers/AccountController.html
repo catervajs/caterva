@@ -82,15 +82,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#create">create</a>
+                                <a href="#createAccount">createAccount</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#find">find</a>
+                                <a href="#getCurrentAccount">getCurrentAccount</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#update">update</a>
+                                <a href="#updateCurrentAccount">updateCurrentAccount</a>
                             </li>
                         </ul>
                     </td>
@@ -113,18 +113,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="create"></a>
+                    <a name="createAccount"></a>
                     <span class="name">
                         <b>
-                            create
+                            createAccount
                         </b>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createAccount"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>create(createAccountDto: <a href="../classes/CreateAccountDto.html">CreateAccountDto</a>)</code>
+<code>createAccount(createAccountDto: <a href="../classes/CreateAccountDto.html">CreateAccountDto</a>)</code>
                 </td>
             </tr>
 
@@ -132,7 +132,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Create new account&#x27;, description: &#x27;Create new account&#x27;})<br />@ApiCreatedResponse({type: Account})<br />@Post()<br /></code>
+                    <code>@HttpCode(HttpStatus.CREATED)<br />@Post()<br /></code>
                 </td>
             </tr>
 
@@ -146,6 +146,8 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Create account</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -190,20 +192,20 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="find"></a>
+                    <a name="getCurrentAccount"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            find
+                            getCurrentAccount
                         </b>
-                        <a href="#find"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getCurrentAccount"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>find(req)</code>
+                    <code>getCurrentAccount(req)</code>
                 </td>
             </tr>
 
@@ -211,20 +213,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Get own account&#x27;, description: &#x27;Get account info (derives account from token)&#x27;})<br />@ApiOkResponse({type: Account})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
+                    <code>@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/core/account/account.controller.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/core/account/account.controller.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get current account</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -265,20 +269,20 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="update"></a>
+                    <a name="updateCurrentAccount"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            update
+                            updateCurrentAccount
                         </b>
-                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                        <a href="#updateCurrentAccount"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(req, updateAccountDto: <a href="../classes/UpdateAccountDto.html">UpdateAccountDto</a>)</code>
+                    <code>updateCurrentAccount(req, updateAccountDto: <a href="../classes/UpdateAccountDto.html">UpdateAccountDto</a>)</code>
                 </td>
             </tr>
 
@@ -286,20 +290,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Update own account&#x27;, description: &#x27;Update account info (derives account from token)&#x27;})<br />@ApiOkResponse({type: Account})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Patch()<br /></code>
+                    <code>@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Patch()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/core/account/account.controller.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/core/account/account.controller.ts:60</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Update current account</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -363,6 +369,8 @@
   UseGuards,
   Request,
   Patch,
+  HttpCode,
+  HttpStatus,
 } from &#x27;@nestjs/common&#x27;;
 import { AccountService } from &#x27;./account.service&#x27;;
 import { CreateAccountDto } from &#x27;./dto/create-account.dto&#x27;;
@@ -383,39 +391,36 @@ import { JwtAuthGuard } from &#x27;../../common/guard/jwt-auth.guard&#x27;;
 export class AccountController {
   constructor(private readonly accountService: AccountService) {}
 
-  @ApiOperation({
-    summary: &#x27;Create new account&#x27;,
-    description: &#x27;Create new account&#x27;,
-  })
-  @ApiCreatedResponse({
-    type: Account,
-  })
+  /**
+   * Create account
+   * @param createAccountDto
+   */
+  @HttpCode(HttpStatus.CREATED)
   @Post()
-  create(@Body() createAccountDto: CreateAccountDto): Promise&lt;Account&gt; {
+  createAccount(@Body() createAccountDto: CreateAccountDto): Promise&lt;Account&gt; {
     return this.accountService.create(createAccountDto);
   }
 
-  @ApiOperation({
-    summary: &#x27;Get own account&#x27;,
-    description: &#x27;Get account info (derives account from token)&#x27;,
-  })
-  @ApiOkResponse({ type: Account })
+  /**
+   * Get current account
+   * @param req
+   */
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
-  async find(@Request() req): Promise&lt;Account&gt; {
+  async getCurrentAccount(@Request() req): Promise&lt;Account&gt; {
     return this.accountService.findOne(req.user.sub);
   }
 
-  @ApiOperation({
-    summary: &#x27;Update own account&#x27;,
-    description: &#x27;Update account info (derives account from token)&#x27;,
-  })
-  @ApiOkResponse({ type: Account })
+  /**
+   * Update current account
+   * @param req
+   * @param updateAccountDto
+   */
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch()
-  async update(
+  async updateCurrentAccount(
     @Request() req,
     @Body() updateAccountDto: UpdateAccountDto,
   ): Promise&lt;Account&gt; {

@@ -115,6 +115,8 @@ export class ProfileService {
     profile.userId &#x3D; userId;
     profile.displayName &#x3D; createProfileDto.displayName;
     profile.avatarUrl &#x3D; createProfileDto?.avatarUrl;
+    profile.language &#x3D; createProfileDto?.language;
+    profile.location &#x3D; createProfileDto?.location;
     return this.profileRepository.save(profile);
   }
 
@@ -132,6 +134,8 @@ export class ProfileService {
     }
     profile.displayName &#x3D; updateProfileDto?.displayName ?? profile.displayName;
     profile.avatarUrl &#x3D; updateProfileDto?.avatarUrl ?? profile.avatarUrl;
+    profile.language &#x3D; updateProfileDto?.language ?? profile.language;
+    profile.location &#x3D; updateProfileDto?.location ?? profile.location;
     return this.profileRepository.save(profile);
   }
 }

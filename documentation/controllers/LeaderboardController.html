@@ -131,7 +131,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntries(req, leaderboardId, offset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, limit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>getEntries(req, leaderboardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, offset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, limit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -139,20 +139,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Get leaderboard entries&#x27;})<br />@ApiOkResponse({type: LeaderboardEntriesDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiParam({name: &#x27;leaderboardId&#x27;})<br />@ApiQuery({name: &#x27;offset&#x27;})<br />@ApiQuery({name: &#x27;limit&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Get(&#x27;:leaderboardId&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Get leaderboard entries&#x27;})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Get(&#x27;:leaderboardId&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:86</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get leaderboard entries</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -182,6 +184,7 @@
                                 <tr>
                                     <td>leaderboardId</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -255,7 +258,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntry(req, leaderboardId, userId)</code>
+                    <code>getEntry(req, leaderboardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -263,20 +266,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Get leaderboard entry for user&#x27;})<br />@ApiOkResponse({type: LeaderboardEntryDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiParam({name: &#x27;leaderboardId&#x27;})<br />@ApiParam({name: &#x27;userId&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Get(&#x27;:leaderboardId/:userId&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Get leaderboard entry for user&#x27;})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Get(&#x27;:leaderboardId/:userId&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:65</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get leaderboard entry for user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -284,12 +289,15 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -299,6 +307,9 @@
                                 </tr>
                                 <tr>
                                     <td>leaderboardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -308,6 +319,9 @@
                                 </tr>
                                 <tr>
                                     <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -348,7 +362,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntryOfMe(req, leaderboardId)</code>
+                    <code>getEntryOfMe(req, leaderboardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -356,20 +370,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Get leaderboard entry for current user&#x27;})<br />@ApiOkResponse({type: LeaderboardEntryDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiParam({name: &#x27;leaderboardId&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:leaderboardId/me&#x27;)<br />@UseFilters(LeaderboardExceptionFilter)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Get leaderboard entry for current user&#x27;})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:leaderboardId/me&#x27;)<br />@UseFilters(LeaderboardExceptionFilter)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:45</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get leaderboard entry for current user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -377,12 +393,15 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -392,6 +411,9 @@
                                 </tr>
                                 <tr>
                                     <td>leaderboardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -432,7 +454,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateEntry(req, leaderboardId, updateEntryDto: <a href="../classes/UpdateEntryDto.html">UpdateEntryDto</a>)</code>
+                    <code>updateEntry(req, leaderboardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateEntryDto: <a href="../classes/UpdateEntryDto.html">UpdateEntryDto</a>)</code>
                 </td>
             </tr>
 
@@ -440,20 +462,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Update leaderboard entry of user&#x27;})<br />@ApiOkResponse({type: LeaderboardEntryDto})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiParam({name: &#x27;leaderboardId&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Post(&#x27;:leaderboardId&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Update leaderboard entry of user&#x27;})<br />@ApiBadRequestResponse({type: BadRequestDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@UseFilters(LeaderboardExceptionFilter)<br />@Post(&#x27;:leaderboardId&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="97"
-                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:97</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/core/leaderboard/leaderboard.controller.ts:110</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Update leaderboard entry of user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -480,6 +504,7 @@
                                 <tr>
                                     <td>leaderboardId</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -553,52 +578,61 @@ import { UpdateEntryDto } from &#x27;./dto/update-entry.dto&#x27;;
 export class LeaderboardController {
   constructor(private readonly leaderboardService: LeaderboardService) {}
 
+  /**
+   * Get leaderboard entry for current user
+   * @param req
+   * @param leaderboardId
+   */
   @ApiOperation({ summary: &#x27;Get leaderboard entry for current user&#x27; })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: &#x27;leaderboardId&#x27; })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;:leaderboardId/me&#x27;)
   @UseFilters(LeaderboardExceptionFilter)
   async getEntryOfMe(
     @Request() req,
-    @Param(&#x27;leaderboardId&#x27;) leaderboardId,
+    @Param(&#x27;leaderboardId&#x27;) leaderboardId: string,
   ): Promise&lt;LeaderboardEntryDto&gt; {
     const userId &#x3D; req.user.sub;
     return this.leaderboardService.getEntry(leaderboardId, userId);
   }
 
+  /**
+   * Get leaderboard entry for user
+   * @param req
+   * @param leaderboardId
+   * @param userId
+   */
   @ApiOperation({ summary: &#x27;Get leaderboard entry for user&#x27; })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: &#x27;leaderboardId&#x27; })
-  @ApiParam({ name: &#x27;userId&#x27; })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Get(&#x27;:leaderboardId/:userId&#x27;)
   async getEntry(
     @Request() req,
-    @Param(&#x27;leaderboardId&#x27;) leaderboardId,
-    @Param(&#x27;userId&#x27;) userId,
+    @Param(&#x27;leaderboardId&#x27;) leaderboardId: string,
+    @Param(&#x27;userId&#x27;) userId: string,
   ): Promise&lt;LeaderboardEntryDto&gt; {
     return this.leaderboardService.getEntry(leaderboardId, userId);
   }
 
+  /**
+   * Get leaderboard entries
+   * @param req
+   * @param leaderboardId
+   * @param offset
+   * @param limit
+   */
   @ApiOperation({ summary: &#x27;Get leaderboard entries&#x27; })
-  @ApiOkResponse({ type: LeaderboardEntriesDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: &#x27;leaderboardId&#x27; })
-  @ApiQuery({ name: &#x27;offset&#x27; })
-  @ApiQuery({ name: &#x27;limit&#x27; })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Get(&#x27;:leaderboardId&#x27;)
   async getEntries(
     @Request() req,
-    @Param(&#x27;leaderboardId&#x27;) leaderboardId,
+    @Param(&#x27;leaderboardId&#x27;) leaderboardId: string,
     @Query(&#x27;offset&#x27;) offset: string &#x3D; undefined,
     @Query(&#x27;limit&#x27;) limit: string &#x3D; undefined,
   ): Promise&lt;LeaderboardEntriesDto&gt; {
@@ -608,17 +642,21 @@ export class LeaderboardController {
     });
   }
 
+  /**
+   * Update leaderboard entry of user
+   * @param req
+   * @param leaderboardId
+   * @param updateEntryDto
+   */
   @ApiOperation({ summary: &#x27;Update leaderboard entry of user&#x27; })
-  @ApiOkResponse({ type: LeaderboardEntryDto })
   @ApiBadRequestResponse({ type: BadRequestDto })
-  @ApiParam({ name: &#x27;leaderboardId&#x27; })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @UseFilters(LeaderboardExceptionFilter)
   @Post(&#x27;:leaderboardId&#x27;)
   async updateEntry(
     @Request() req,
-    @Param(&#x27;leaderboardId&#x27;) leaderboardId,
+    @Param(&#x27;leaderboardId&#x27;) leaderboardId: string,
     @Body() updateEntryDto: UpdateEntryDto,
   ): Promise&lt;LeaderboardEntryDto&gt; {
     const userId &#x3D; req.user.sub;

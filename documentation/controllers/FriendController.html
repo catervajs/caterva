@@ -83,7 +83,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#add">add</a>
+                                <a href="#addFriend">addFriend</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -107,7 +107,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#remove">remove</a>
+                                <a href="#removeFriend">removeFriend</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -134,20 +134,20 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="add"></a>
+                    <a name="addFriend"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            add
+                            addFriend
                         </b>
-                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                        <a href="#addFriend"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>add(req, addFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                    <code>addFriend(req, addFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
                 </td>
             </tr>
 
@@ -155,20 +155,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Send or accept friend request&#x27;})<br />@ApiCreatedResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Send or accept friend request&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:117</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Send or accept friend request</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -245,20 +247,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Block user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/block&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Block user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/block&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:163</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Block user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -327,7 +331,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findRelationOfMeAndOther(req, otherId)</code>
+                    <code>findRelationOfMeAndOther(req, otherId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -335,7 +339,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Find relation of this user and any other user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiParam({name: &#x27;otherId&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me/:otherId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Find relation of this user and any other user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me/:otherId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
@@ -349,6 +353,8 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Find relation of current user and any other user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -356,12 +362,15 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -371,6 +380,9 @@
                                 </tr>
                                 <tr>
                                     <td>otherId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -411,7 +423,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findRelations(req, aId)</code>
+                    <code>findRelations(req, aId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -419,7 +431,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Find relations of any user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusesDto})<br />@ApiResponse({type: FriendshipTwoWayRelationStatusesDto, status: 200})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Find relations of any user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId&#x27;)<br /></code>
                 </td>
             </tr>
 
@@ -433,6 +445,8 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Find relations of any user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -440,12 +454,15 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -455,6 +472,9 @@
                                 </tr>
                                 <tr>
                                     <td>aId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -503,20 +523,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Find relations of this user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusesDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Find relations of this user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;me&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Find relations of this user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -570,7 +592,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findRelationWithOther(req, aId, bId)</code>
+                    <code>findRelationWithOther(req, aId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, bId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -578,20 +600,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Find relation of any two users&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId/:bId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Find relation of any two users&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:aId/:bId&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:95</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Find relation of any two users</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -599,12 +623,15 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -614,6 +641,9 @@
                                 </tr>
                                 <tr>
                                     <td>aId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -623,6 +653,9 @@
                                 </tr>
                                 <tr>
                                     <td>bId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -650,20 +683,20 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="remove"></a>
+                    <a name="removeFriend"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            remove
+                            removeFriend
                         </b>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                        <a href="#removeFriend"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(req, removeFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
+                    <code>removeFriend(req, removeFriendDto: <a href="../classes/ReferenceFriendDto.html">ReferenceFriendDto</a>)</code>
                 </td>
             </tr>
 
@@ -671,20 +704,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Remove friendship or cancel friend request&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Remove friendship or cancel friend request&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;me&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:138</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Remove friendship or cancel friend request</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -761,20 +796,22 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@ApiOperation({summary: &#x27;Unblock user&#x27;})<br />@ApiOkResponse({type: FriendshipTwoWayRelationStatusDto})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/unblock&#x27;)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
+                    <code>@ApiOperation({summary: &#x27;Unblock user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;me/unblock&#x27;)<br />@HttpCode(HttpStatus.OK)<br />@UseFilters(new SelfReferenceErrorFilter())<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="165"
-                            class="link-to-prism">src/core/friend/friend.controller.ts:165</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/core/friend/friend.controller.ts:188</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Unblock user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -840,21 +877,15 @@
   Body,
   Delete,
   UseFilters,
+  HttpStatus,
+  HttpCode,
 } from &#x27;@nestjs/common&#x27;;
 import { FriendService } from &#x27;./friend.service&#x27;;
 import { FriendshipTwoWayRelationStatusesDto } from &#x27;./dto/friendship-two-way-relation-statuses.dto&#x27;;
 import { JwtAuthGuard } from &#x27;../../common/guard/jwt-auth.guard&#x27;;
 import { FriendshipTwoWayRelationStatusDto } from &#x27;./dto/friendship-two-way-relation-status.dto&#x27;;
 import { ReferenceFriendDto } from &#x27;./dto/reference-friend.dto&#x27;;
-import {
-  ApiBearerAuth,
-  ApiCreatedResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiParam,
-  ApiResponse,
-  ApiTags,
-} from &#x27;@nestjs/swagger&#x27;;
+import { ApiBearerAuth, ApiOperation, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { SelfReferenceErrorFilter } from &#x27;./self-reference-error.filter&#x27;;
 
 @ApiTags(&#x27;friends&#x27;)
@@ -862,10 +893,13 @@ import { SelfReferenceErrorFilter } from &#x27;./self-reference-error.filter&#x2
 export class FriendController {
   constructor(private readonly friendService: FriendService) {}
 
+  /**
+   * Find relations of this user
+   * @param req
+   */
   @ApiOperation({
     summary: &#x27;Find relations of this user&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;me&#x27;)
@@ -875,69 +909,81 @@ export class FriendController {
     return this.friendService.getAll(req.user.sub);
   }
 
+  /**
+   * Find relation of current user and any other user
+   * @param req
+   * @param otherId
+   */
   @ApiOperation({
     summary: &#x27;Find relation of this user and any other user&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
-  @ApiParam({ name: &#x27;otherId&#x27; })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;me/:otherId&#x27;)
   @UseFilters(new SelfReferenceErrorFilter())
   async findRelationOfMeAndOther(
     @Request() req,
-    @Param(&#x27;otherId&#x27;) otherId,
+    @Param(&#x27;otherId&#x27;) otherId: string,
   ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
     const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
     dto.status &#x3D; await this.friendService.get(req.user.sub, otherId);
     return dto;
   }
 
+  /**
+   * Find relations of any user
+   * @param req
+   * @param aId
+   */
   @ApiOperation({
     summary: &#x27;Find relations of any user&#x27;,
-  })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusesDto })
-  @ApiResponse({
-    type: FriendshipTwoWayRelationStatusesDto,
-    status: 200,
   })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;:aId&#x27;)
   async findRelations(
     @Request() req,
-    @Param(&#x27;aId&#x27;) aId,
+    @Param(&#x27;aId&#x27;) aId: string,
   ): Promise&lt;FriendshipTwoWayRelationStatusesDto&gt; {
     return this.friendService.getAll(aId);
   }
 
+  /**
+   * Find relation of any two users
+   * @param req
+   * @param aId
+   * @param bId
+   */
   @ApiOperation({
     summary: &#x27;Find relation of any two users&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;:aId/:bId&#x27;)
   @UseFilters(new SelfReferenceErrorFilter())
   async findRelationWithOther(
     @Request() req,
-    @Param(&#x27;aId&#x27;) aId,
-    @Param(&#x27;bId&#x27;) bId,
+    @Param(&#x27;aId&#x27;) aId: string,
+    @Param(&#x27;bId&#x27;) bId: string,
   ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
     const dto &#x3D; new FriendshipTwoWayRelationStatusDto();
     dto.status &#x3D; await this.friendService.get(aId, bId);
     return dto;
   }
 
+  /**
+   * Send or accept friend request
+   * @param req
+   * @param addFriendDto
+   */
   @ApiOperation({
     summary: &#x27;Send or accept friend request&#x27;,
   })
-  @ApiCreatedResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;me&#x27;)
   @UseFilters(new SelfReferenceErrorFilter())
-  async add(
+  async addFriend(
     @Request() req,
     @Body() addFriendDto: ReferenceFriendDto,
   ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
@@ -946,15 +992,19 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Remove friendship or cancel friend request
+   * @param req
+   * @param removeFriendDto
+   */
   @ApiOperation({
     summary: &#x27;Remove friendship or cancel friend request&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(&#x27;me&#x27;)
   @UseFilters(new SelfReferenceErrorFilter())
-  async remove(
+  async removeFriend(
     @Request() req,
     @Body() removeFriendDto: ReferenceFriendDto,
   ): Promise&lt;FriendshipTwoWayRelationStatusDto&gt; {
@@ -966,13 +1016,18 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Block user
+   * @param req
+   * @param blockFriendDto
+   */
   @ApiOperation({
     summary: &#x27;Block user&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;me/block&#x27;)
+  @HttpCode(HttpStatus.OK)
   @UseFilters(new SelfReferenceErrorFilter())
   async block(
     @Request() req,
@@ -986,13 +1041,18 @@ export class FriendController {
     return dto;
   }
 
+  /**
+   * Unblock user
+   * @param req
+   * @param unblockFriendDto
+   */
   @ApiOperation({
     summary: &#x27;Unblock user&#x27;,
   })
-  @ApiOkResponse({ type: FriendshipTwoWayRelationStatusDto })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;me/unblock&#x27;)
+  @HttpCode(HttpStatus.OK)
   @UseFilters(new SelfReferenceErrorFilter())
   async unblock(
     @Request() req,

@@ -12,7 +12,7 @@ Alternatively for quick local development run `$ docker-compose up -d` in projec
 Connections will default to localhost otherwise
 - `DATABASE_URL` for Postgres DSN
 - `REDIS_URL` for Redis
-- `SECRET` for JWT Secrete
+- `SECRET` for JWT Secret
 
 
 ### Run

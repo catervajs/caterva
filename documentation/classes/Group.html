@@ -80,6 +80,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#createdAt">createdAt</a>
                             </li>
                             <li>
@@ -89,12 +90,14 @@
                                 <a href="#inviteOnly">inviteOnly</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#members">members</a>
                             </li>
                             <li>
                                 <a href="#name">name</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#updatedAt">updatedAt</a>
                             </li>
                         </ul>
@@ -123,6 +126,7 @@
                         <a name="createdAt"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             createdAt</b>
                             <a href="#createdAt"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -139,13 +143,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty()<br />@CreateDateColumn()<br />
+                                @CreateDateColumn()<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/core/group/entities/group.entity.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/core/group/entities/group.entity.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -175,13 +179,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty()<br />@PrimaryGeneratedColumn(&#x27;uuid&#x27;)<br />
+                                @PrimaryGeneratedColumn(&#x27;uuid&#x27;)<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/core/group/entities/group.entity.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/core/group/entities/group.entity.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -211,13 +215,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty()<br />@Column({default: false})<br />
+                                @Column({default: false})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/core/group/entities/group.entity.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/core/group/entities/group.entity.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -231,6 +235,7 @@
                         <a name="members"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             members</b>
                             <a href="#members"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -247,13 +252,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty({type: undefined})<br />@OneToMany(undefined, undefined)<br />
+                                @OneToMany(undefined, undefined)<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/core/group/entities/group.entity.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/core/group/entities/group.entity.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -283,13 +288,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty()<br />@Column({type: &#x27;text&#x27;, unique: true})<br />
+                                @Column({type: &#x27;text&#x27;, unique: true})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/core/group/entities/group.entity.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/core/group/entities/group.entity.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -303,6 +308,7 @@
                         <a name="updatedAt"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             updatedAt</b>
                             <a href="#updatedAt"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -319,13 +325,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty()<br />@UpdateDateColumn()<br />
+                                @UpdateDateColumn()<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/core/group/entities/group.entity.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/core/group/entities/group.entity.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -353,33 +359,26 @@
   UpdateDateColumn,
 } from &#x27;typeorm&#x27;;
 import { GroupMember } from &#x27;./group-member.entity&#x27;;
-import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 
 @Entity()
 export class Group {
-  @ApiProperty()
   @PrimaryGeneratedColumn(&#x27;uuid&#x27;)
   id: string;
 
-  @ApiProperty()
   @Column({ type: &#x27;text&#x27;, unique: true })
   name: string;
 
-  @ApiProperty()
   @Column({ default: false })
   inviteOnly: boolean;
 
-  @ApiProperty()
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt?: Date;
 
-  @ApiProperty()
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt?: Date;
 
-  @ApiProperty({ type: () &#x3D;&gt; [GroupMember] })
   @OneToMany(() &#x3D;&gt; GroupMember, (groupMember) &#x3D;&gt; groupMember.group)
-  members: GroupMember[];
+  members?: GroupMember[];
 }
 </code></pre>
     </div>

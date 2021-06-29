@@ -267,8 +267,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/core/account/account.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/core/account/account.service.ts:46</a></div>
                 </td>
             </tr>
 
@@ -341,8 +341,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/core/account/account.service.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/core/account/account.service.ts:62</a></div>
                 </td>
             </tr>
 
@@ -415,8 +415,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/core/account/account.service.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/core/account/account.service.ts:54</a></div>
                 </td>
             </tr>
 
@@ -489,8 +489,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/core/account/account.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/core/account/account.service.ts:77</a></div>
                 </td>
             </tr>
 
@@ -563,8 +563,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/core/account/account.service.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/core/account/account.service.ts:70</a></div>
                 </td>
             </tr>
 
@@ -637,8 +637,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/core/account/account.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/core/account/account.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -727,8 +727,6 @@ export class AccountService {
     account.deviceId &#x3D; createAccountDto.deviceId;
     account.appleId &#x3D; createAccountDto.appleId;
     account.googleId &#x3D; createAccountDto.googleId;
-    account.location &#x3D; createAccountDto.location;
-    account.language &#x3D; createAccountDto.language;
     return this.accountRepository.save(account);
   }
 
@@ -745,8 +743,6 @@ export class AccountService {
     account.deviceId &#x3D; updateAccountDto.deviceId ?? account.deviceId;
     account.appleId &#x3D; updateAccountDto.appleId ?? account.appleId;
     account.googleId &#x3D; updateAccountDto.googleId ?? account.googleId;
-    account.language &#x3D; updateAccountDto.language ?? account.language;
-    account.location &#x3D; updateAccountDto.location ?? account.location;
     return this.accountRepository.save(account);
   }
 

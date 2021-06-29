@@ -283,9 +283,10 @@ export class GroupService {
       );
     }
 
-    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne(
-      targetUserId,
-    );
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: targetUserId,
+    });
     if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Banned) {
       throw new BannedFromGroupError(
         &#x60;Invited user &quot;${targetUserId}&quot; is banned from group &quot;${groupId}&quot;, unban first to invite&#x60;,

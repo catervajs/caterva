@@ -233,8 +233,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="370"
-                            class="link-to-prism">src/core/group/group.service.ts:370</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="371"
+                            class="link-to-prism">src/core/group/group.service.ts:371</a></div>
                 </td>
             </tr>
 
@@ -596,8 +596,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="227"
-                            class="link-to-prism">src/core/group/group.service.ts:227</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="228"
+                            class="link-to-prism">src/core/group/group.service.ts:228</a></div>
                 </td>
             </tr>
 
@@ -744,8 +744,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="294"
-                            class="link-to-prism">src/core/group/group.service.ts:294</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="295"
+                            class="link-to-prism">src/core/group/group.service.ts:295</a></div>
                 </td>
             </tr>
 
@@ -830,8 +830,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="306"
-                            class="link-to-prism">src/core/group/group.service.ts:306</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="307"
+                            class="link-to-prism">src/core/group/group.service.ts:307</a></div>
                 </td>
             </tr>
 
@@ -1000,8 +1000,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="239"
-                            class="link-to-prism">src/core/group/group.service.ts:239</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/core/group/group.service.ts:240</a></div>
                 </td>
             </tr>
 
@@ -1086,8 +1086,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="321"
-                            class="link-to-prism">src/core/group/group.service.ts:321</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="322"
+                            class="link-to-prism">src/core/group/group.service.ts:322</a></div>
                 </td>
             </tr>
 
@@ -1172,8 +1172,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="458"
-                            class="link-to-prism">src/core/group/group.service.ts:458</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="459"
+                            class="link-to-prism">src/core/group/group.service.ts:459</a></div>
                 </td>
             </tr>
 
@@ -1268,8 +1268,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="423"
-                            class="link-to-prism">src/core/group/group.service.ts:423</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="424"
+                            class="link-to-prism">src/core/group/group.service.ts:424</a></div>
                 </td>
             </tr>
 
@@ -1643,9 +1643,10 @@ export class GroupService {
       );
     }
 
-    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne(
-      targetUserId,
-    );
+    const targetGroupMember &#x3D; await this.groupMemberRepository.findOne({
+      groupId: groupId,
+      memberId: targetUserId,
+    });
     if (targetGroupMember?.membershipStatus &#x3D;&#x3D;&#x3D; GroupMembershipStatus.Banned) {
       throw new BannedFromGroupError(
         &#x60;Invited user &quot;${targetUserId}&quot; is banned from group &quot;${groupId}&quot;, unban first to invite&#x60;,

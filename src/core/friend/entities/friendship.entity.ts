@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
@@ -33,11 +34,11 @@ export class Friendship {
   @UpdateDateColumn()
   updatedAt?: Date;
 
-  @OneToOne(() => Account)
+  @ManyToOne(() => Account, { onDelete: 'CASCADE' })
   @JoinColumn()
   a?: Account;
 
-  @OneToOne(() => Account)
+  @ManyToOne(() => Account, { onDelete: 'CASCADE' })
   @JoinColumn()
   b?: Account;
 }

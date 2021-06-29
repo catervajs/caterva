@@ -5,6 +5,4 @@ export class CreateAccountDto {
   appleId?: string;
   googleId?: string;
   facebookId?: string;
-  location?: string;
-  language?: string;
 }

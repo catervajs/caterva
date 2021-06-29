@@ -122,18 +122,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/common/dto/bad-request.dto.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/common/dto/bad-request.dto.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -158,18 +149,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/common/dto/bad-request.dto.ts:6</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/common/dto/bad-request.dto.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -192,24 +174,14 @@
 import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 
 export class ErrorDto {
-  @ApiProperty()
   name: string;
-
-  @ApiProperty()
   message: string;
 }
 
 export class BadRequestDto {
-  @ApiProperty()
   statusCode: HttpStatus;
-
-  @ApiProperty()
   timestamp: Date;
-
-  @ApiProperty()
   path: string;
-
-  @ApiProperty()
   error: ErrorDto;
 }
 </code></pre>

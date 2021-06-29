@@ -71,7 +71,6 @@ export class ProfileController {
   }
 
   @ApiOperation({ summary: 'Find profile of any user' })
-  @ApiParam({ name: 'userId' })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':userId')

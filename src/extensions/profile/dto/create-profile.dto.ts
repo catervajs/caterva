@@ -4,6 +4,9 @@ export class CreateProfileDto {
   @ApiProperty({ minLength: 3 })
   displayName: string;
 
-  @ApiPropertyOptional()
-  avatarUrl?: string;
+  avatarUrl?: string | null;
+
+  location?: string | null;
+
+  language?: string | null;
 }

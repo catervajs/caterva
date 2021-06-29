@@ -29,12 +29,6 @@ export class Account {
   @Column({ type: 'text', nullable: true })
   facebookId?: string | null;
 
-  @Column({ type: 'text', nullable: true })
-  location?: string | null;
-
-  @Column({ type: 'text', nullable: true })
-  language?: string | null;
-
   @Column({ type: 'jsonb', nullable: true })
   metadata?: any | null;
 

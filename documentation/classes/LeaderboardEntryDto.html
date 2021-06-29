@@ -80,12 +80,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#rank">rank</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#score">score</a>
                             </li>
                             <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#userId">userId</a>
                             </li>
                         </ul>
@@ -114,6 +117,7 @@
                         <a name="rank"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             rank</b>
                             <a href="#rank"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -125,18 +129,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -150,6 +145,7 @@
                         <a name="score"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             score</b>
                             <a href="#score"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -161,18 +157,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:3</a></div>
                             </td>
                         </tr>
 
@@ -186,6 +173,7 @@
                         <a name="userId"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             userId</b>
                             <a href="#userId"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -197,18 +185,9 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty()<br />
-                            </code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:5</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/core/leaderboard/dto/leaderboard-entry.dto.ts:2</a></div>
                             </td>
                         </tr>
 
@@ -227,17 +206,10 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-
-export class LeaderboardEntryDto {
-  @ApiProperty()
-  userId: string;
-
-  @ApiProperty()
-  score: number;
-
-  @ApiProperty()
-  rank: number;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class LeaderboardEntryDto {
+  userId?: string;
+  score?: number;
+  rank?: number;
 }
 </code></pre>
     </div>

@@ -5,7 +5,6 @@ import { AccountService } from './account.service';
 import { Account } from './entities/account.entity';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
-import exp from 'constants';
 
 describe('AccountService', () => {
   let service: AccountService;
@@ -37,8 +36,6 @@ describe('AccountService', () => {
         deviceId: 'device',
         facebookId: 'facebook',
         googleId: 'google',
-        language: 'en',
-        location: 'us',
       };
       const shouldReturnGroup: Account = {
         ...createAccountDto,
@@ -56,15 +53,12 @@ describe('AccountService', () => {
     it('should return updated account', async () => {
       const updateAccountDto: UpdateAccountDto = {
         googleId: 'alphabet',
-        location: 'uk',
       };
       const createAccountDto: CreateAccountDto = {
         appleId: 'apple',
         deviceId: 'device',
         facebookId: 'facebook',
         googleId: 'google',
-        language: 'en',
-        location: 'us',
       };
       const shouldReturnGroup: Account = {
         ...createAccountDto,
@@ -74,7 +68,6 @@ describe('AccountService', () => {
         updatedAt: new Date(),
       };
       shouldReturnGroup.googleId = 'alphabet';
-      shouldReturnGroup.location = 'uk';
       jest
         .spyOn(accountRepo, 'findOne')
         .mockResolvedValueOnce(shouldReturnGroup);

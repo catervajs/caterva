@@ -23,11 +23,17 @@ export class Profile {
 
   @ApiPropertyOptional()
   @Column({ type: 'text', nullable: true })
-  avatarUrl?: string;
+  avatarUrl?: string | null;
 
   @ApiProperty()
   @Column({ type: 'integer', default: 1 })
-  level?: number;
+  level?: number | null;
+
+  @Column({ type: 'text', nullable: true })
+  location?: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  language?: string | null;
 
   @ApiPropertyOptional()
   @OneToOne(() => Account)
